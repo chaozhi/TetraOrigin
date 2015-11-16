@@ -15,3 +15,8 @@ Mathematica package for haplotype reconstruction in a full-sib tetraploid family
    SetDirectory[NotebookDirectory[]];
 
 3. Go through "TetraOrigin_Tutorial.nb" or "TetraOrigin_Example.nb" in the folder "TetraOrigin_Tutorial".
+
+##References
+##
+
+Chaozhi Zheng, Roeland E. Voorrips, Johannes Jansen, Christine A. Hackett, Julie Ho, and Marco C.A.M. Bink. 2015. Probabilistic multilocus haplotype reconstruction in outcrossing tetraploids.
