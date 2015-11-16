@@ -10,9 +10,11 @@ Mathematica package for haplotype reconstruction in a full-sib tetraploid family
 1. Clone in Desktop or Download ZIP. 
 
 2. Set path to the folder "TetraOrigin_Packages", and then load the package. For example,
+   ```
    SetDirectory["D:\\Chaozhi\\GitHub Clones\\TetraOrigin\\TetraOrigin_Packages"];
    Needs["TetraOrigin`"]
    SetDirectory[NotebookDirectory[]];
+   ```
 
 3. Go through "TetraOrigin_Tutorial.nb" or "TetraOrigin_Example.nb" in the folder "TetraOrigin_Tutorial".
 
