@@ -1,0 +1,592 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     21972,        583]
+NotebookOptionsPosition[     19734,        506]
+NotebookOutlinePosition[     20434,        533]
+CellTagsIndexPosition[     20308,        527]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<D:\\\\Chaozhi\\\\GitHub Clones\\\\TetraOrigin\\\\TetraOrigin_Packages\
+\>\"", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<TetraOrigin`\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6107820227481675`*^9, 3.6107820266181674`*^9}, {
+  3.6107820695581675`*^9, 3.6107820697781677`*^9}, {3.6112138163372493`*^9, 
+  3.6112138265872493`*^9}, {3.6263416646303277`*^9, 3.6263416651703277`*^9}, {
+  3.6263552508829355`*^9, 3.626355251711983*^9}, {3.63074661488214*^9, 
+  3.6307466336021404`*^9}}],
+
+Cell[BoxData["\<\"D:\\\\Chaozhi\\\\GitHub \
+Clones\\\\TetraOrigin\\\\TetraOrigin_Tutorial\"\>"], "Output",
+ CellChangeTimes->{3.650087910184589*^9, 3.656680621787566*^9, 
+  3.656687124390649*^9, 3.656687259722384*^9, 3.656687640672389*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataid", "=", "\"\<ExampleData\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SNPDosefile", "=", 
+   RowBox[{
+   "\"\<TetraOrigin_Input_SNPDose_\>\"", "<>", "dataid", "<>", 
+    "\"\<.csv\>\""}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"chrsubset", ",", "snpsubset"}], "}"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"\"\<All\>\"", ",", "\"\<All\>\""}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"epsF", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eps", "=", 
+   RowBox[{"10", "^", 
+    RowBox[{"(", 
+     RowBox[{"-", "3."}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ploidy", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"outputid", "=", "dataid"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6307441873861403`*^9, 3.63074423202614*^9}, {
+   3.6307442837061405`*^9, 3.63074428956614*^9}, {3.6307444584261403`*^9, 
+   3.6307444645961404`*^9}, {3.6307445095461407`*^9, 
+   3.6307445130461407`*^9}, {3.6307449925171404`*^9, 3.6307449927071404`*^9}, 
+   3.63074849002614*^9, {3.645246254325859*^9, 3.645246256844859*^9}, {
+   3.645246433266859*^9, 3.6452464334418592`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SNPDose", "=", 
+   RowBox[{"Import", "[", "SNPDosefile", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dimensions", "[", "SNPDose", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SNPDose", "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{";;", "10"}], ",", 
+     RowBox[{";;", "10"}]}], "]"}], "]"}], "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.6198577197428646`*^9, 3.6198577339948645`*^9}, {
+  3.620719064115803*^9, 3.6207190828089905`*^9}, {3.6216932652897425`*^9, 
+  3.621693266665821*^9}, {3.6219194990674243`*^9, 3.62191949985744*^9}, {
+  3.621920478374303*^9, 3.621920479554303*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"55", ",", "76"}], "}"}]], "Output",
+ CellChangeTimes->{3.6500879103646016`*^9, 3.6566806219591675`*^9, 
+  3.656687124546651*^9, 3.656687259878386*^9, 3.65668764082839*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\<\"marker\"\>", "\<\"A0001\"\>", "\<\"A0017\"\>", "\<\"A0033\"\>", \
+"\<\"A0049\"\>", "\<\"A0065\"\>", "\<\"A0081\"\>", "\<\"A0097\"\>", \
+"\<\"A0113\"\>", "\<\"A0129\"\>"},
+     {"\<\"chromosome\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", \
+"\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>"},
+     {"\<\"position\"\>", "0.1578`", "1.6068`", "3.8056`", "5.1862`", 
+      "6.9518`", "7.9891`", "9.5328`", "11.9003`", "13.5111`"},
+     {"\<\"P1\"\>", "1", "2", "2", "0", "2", "1", "3", "3", "3"},
+     {"\<\"P2\"\>", "3", "1", "2", "2", "2", "2", "3", "1", "2"},
+     {"\<\"F1_001\"\>", "2", "1", "1", "2", "1", "2", "4", "2", "3"},
+     {"\<\"F1_009\"\>", "2", "2", "1", "1", "3", "1", "3", "2", "3"},
+     {"\<\"F1_017\"\>", "2", "2", "0", "1", "2", "2", "3", "3", "2"},
+     {"\<\"F1_025\"\>", "3", "2", "1", "1", "2", "3", "3", "3", "2"},
+     {"\<\"F1_033\"\>", "3", "1", "2", "1", "2", "2", "4", "2", "4"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.6500879103646016`*^9, 3.6566806219591675`*^9, 
+  3.656687124546651*^9, 3.656687259878386*^9, 3.6566876408439903`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**"}], "*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*", 
+   RowBox[{"**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}],
+    "*", "*", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6214025021356735`*^9, 3.6214025084166737`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Options", "[", "inferTetraOrigin", "]"}]], "Input",
+ CellChangeTimes->{{3.656687115794939*^9, 3.656687131114335*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"maxStuck", "\[Rule]", "10"}], ",", 
+   RowBox[{"maxIteration", "\[Rule]", "100"}], ",", 
+   RowBox[{"minRepeatRun", "\[Rule]", "3"}], ",", 
+   RowBox[{"maxPhasingRun", "\[Rule]", "20"}], ",", 
+   RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
+   RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6566871314575396`*^9, 3.6566872599095864`*^9, 
+  3.6566876408751903`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "inferTetraOrigin"}]], "Input",
+ CellChangeTimes->{{3.6566871409892616`*^9, 3.6566871419096737`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, \
+founderhaplo, outputid] calculates the posterior probabilities for each sib \
+at each SNP marker given the the parental haplotype founderhaplo, and the \
+results are saved in the file \
+\\\"TetraOrigin_Output_outputid_LinkageGroupA.txt\\\" for the linkage group \
+A, and so on for the rest linkage groups. Refer to inferTetraPhase for \
+estimating parental haplotype and descriptions of other paremters. \
+\\ninferTetraOrigin[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy, \
+outputid] is a combination of {founderhaplo, loglhistory}= \
+inferTetraPhase[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy] and \
+inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, \
+outputid].\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.656687640999991*^9},
+ CellTags->"Info3656691240-7310108"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"inferTetraOrigin", "[", 
+   RowBox[{
+   "SNPDosefile", ",", "chrsubset", ",", "snpsubset", ",", "epsF", ",", "eps",
+     ",", "ploidy", ",", "outputid", ",", 
+    RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
+    RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.6272144384257183`*^9, 3.6272144577797184`*^9}, 
+   3.6272145239327183`*^9, {3.627214677459198*^9, 3.62721468048044*^9}, {
+   3.6307449992271404`*^9, 3.6307449998271403`*^9}, {3.6307452773291407`*^9, 
+   3.6307452922691402`*^9}, {3.6307455266001406`*^9, 
+   3.6307455324701405`*^9}, {3.6307457909101405`*^9, 
+   3.6307457964201403`*^9}, {3.6307458862201405`*^9, 
+   3.6307458868601403`*^9}, {3.6566870906786165`*^9, 3.6566870921138353`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Start Date =\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:34:01\"\>", 
+   "\[InvisibleSpace]", "\<\". Chromosome  = \"\>", 
+   "\[InvisibleSpace]", "\<\"A\"\>"}],
+  SequenceForm[
+  "Start Date =", "Mon 16 Nov 2015 19:34:01", ". Chromosome  = ", "A"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6566872602215905`*^9, 3.656687641187192*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Finish Phasing Date =\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:34:38\"\>", 
+   "\[InvisibleSpace]", "\<\". Time used in Phasing = \"\>", 
+   "\[InvisibleSpace]", "37.`", 
+   "\[InvisibleSpace]", "\<\" Seconds. log posterior of phasing runs = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1946.26`"}], ",", 
+     RowBox[{"-", "1813.3600000000001`"}], ",", 
+     RowBox[{"-", "1813.3600000000001`"}], ",", 
+     RowBox[{"-", "1813.3600000000001`"}]}], "}"}]}],
+  SequenceForm[
+  "Finish Phasing Date =", "Mon 16 Nov 2015 19:34:38", 
+   ". Time used in Phasing = ", 37., 
+   " Seconds. log posterior of phasing runs = ", {-1946.26, \
+-1813.3600000000001`, -1813.3600000000001`, -1813.3600000000001`}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6566872602215905`*^9, 3.6566876781438293`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Start Date =\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:34:38\"\>", 
+   "\[InvisibleSpace]", "\<\". Outputfile=\"\>", 
+   "\[InvisibleSpace]", "\<\"TetraOrigin_Output_ExampleData_LinkageGroupA.txt\
+\"\>"}],
+  SequenceForm[
+  "Start Date =", "Mon 16 Nov 2015 19:34:38", ". Outputfile=", 
+   "TetraOrigin_Output_ExampleData_LinkageGroupA.txt"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6566872602215905`*^9, 3.6566876781906295`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Finish Date =\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:34:58\"\>", 
+   "\[InvisibleSpace]", "\<\". Time used in Posteriordecoding = \"\>", 
+   "\[InvisibleSpace]", "20.5`", "\[InvisibleSpace]", "\<\" Seconds.\"\>"}],
+  SequenceForm[
+  "Finish Date =", "Mon 16 Nov 2015 19:34:58", 
+   ". Time used in Posteriordecoding = ", 20.5, " Seconds."],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6566872602215905`*^9, 3.6566876987203608`*^9}],
+
+Cell[BoxData["\<\"------------------------------------------------------------\
+--------------------------\"\>"], "Print",
+ CellChangeTimes->{3.6566872602215905`*^9, 3.656687698735961*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**"}], "*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*", 
+   RowBox[{"**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}],
+    "*", "*", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6214025021356735`*^9, 3.6214025084166737`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"linkagegroup", "=", "\"\<A\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"tetraResultFile", "=", 
+  RowBox[{
+  "\"\<TetraOrigin_Output_\>\"", "<>", "dataid", "<>", 
+   "\"\<_LinkageGroup\>\"", "<>", 
+   RowBox[{"ToString", "[", "linkagegroup", "]"}], "<>", 
+   "\"\<.txt\>\""}]}], "\[IndentingNewLine]", 
+ RowBox[{"summaryFile", "=", 
+  RowBox[{"StringReplace", "[", 
+   RowBox[{"tetraResultFile", ",", 
+    RowBox[{"{", 
+     RowBox[{"\"\<.txt\>\"", "\[Rule]", "\"\<_Summary.csv\>\""}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"refhaploFile", "=", 
+  RowBox[{
+  "\"\<TetraOrigin_Truevalues_founderhaplo_\>\"", "<>", "dataid", "<>", 
+   "\"\<.csv\>\""}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"saveAsSummaryITO", "[", 
+    RowBox[{"tetraResultFile", ",", "summaryFile", ",", "refhaploFile"}], 
+    "]"}], ";"}], "//", "AbsoluteTiming"}]}], "Input",
+ CellChangeTimes->{
+  3.626783596427175*^9, 3.626784015301175*^9, 3.626784062210175*^9, 
+   3.626784898302175*^9, {3.62679935630717*^9, 3.6267993567871704`*^9}, 
+   3.62679945629731*^9, {3.626856360392397*^9, 3.626856367913322*^9}, {
+   3.6268564825928497`*^9, 3.6268564828028493`*^9}, 3.627023008697693*^9, 
+   3.6270249634357543`*^9, {3.627025045114117*^9, 3.627025054256209*^9}, {
+   3.6307444177161407`*^9, 3.6307444511261406`*^9}, {3.6452464177238593`*^9, 
+   3.6452464221708593`*^9}}],
+
+Cell[BoxData["\<\"TetraOrigin_Output_ExampleData_LinkageGroupA.txt\"\>"], \
+"Output",
+ CellChangeTimes->{3.650087975148659*^9, 3.656680722446828*^9, 
+  3.656687347240506*^9, 3.6566876989075623`*^9}],
+
+Cell[BoxData["\<\"TetraOrigin_Output_ExampleData_LinkageGroupA_Summary.csv\"\>\
+"], "Output",
+ CellChangeTimes->{3.650087975148659*^9, 3.656680722446828*^9, 
+  3.656687347240506*^9, 3.6566876989231625`*^9}],
+
+Cell[BoxData["\<\"TetraOrigin_Truevalues_founderhaplo_ExampleData.csv\"\>"], \
+"Output",
+ CellChangeTimes->{3.650087975148659*^9, 3.656680722446828*^9, 
+  3.656687347240506*^9, 3.6566876989387627`*^9}],
+
+Cell[BoxData["\<\"The number of mismatches between estimated parental \
+haplotypes and reference haplotypes: 0\"\>"], "Print",
+ CellChangeTimes->{3.6500879792619534`*^9, 3.656680726034851*^9, 
+  3.656687350734951*^9, 3.656687702417585*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "6.2400399999999995870325619762297719717`6.815787286892112", ",", "Null"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.650087975148659*^9, 3.656680722446828*^9, 
+  3.656687347240506*^9, 3.656687705147602*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**"}], "*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*", 
+   RowBox[{"**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}],
+    "*", "*", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6214025021356735`*^9, 3.6214025084166737`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "getSummaryITO"}]], "Input",
+ CellChangeTimes->{{3.6452464616158595`*^9, 3.6452464621758595`*^9}}],
+
+Cell[BoxData[
+ StyleBox["\<\"getSummaryITO[summaryFile] imports the summary produced by \
+saveAsSummaryITO for furthur analysis in mathematica, and returns \
+{description, snpmap, esthaplo, refhaplo, logllist, siblogl, genotypes, \
+estgenoprob, esthaploprob}, where description is a list of explainations for \
+the rest.\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.656687705272403*^9},
+ CellTags->"Info3656691305-5999879"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "description", ",", "snpmap", ",", "esthaplo", ",", "refhaplo", ",", 
+      "logllist", ",", "siblogl", ",", "genotypes", ",", "estgenoprob", ",", 
+      "esthaploprob"}], "}"}], "=", 
+    RowBox[{"getSummaryITO", "[", "summaryFile", "]"}]}], ";"}], "//", 
+  "AbsoluteTiming"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Dimensions", "[", "#", "]"}], "&"}], "/@", 
+  RowBox[{"{", 
+   RowBox[{
+   "description", ",", "snpmap", ",", "esthaplo", ",", "refhaplo", ",", 
+    "logllist", ",", "siblogl", ",", "genotypes", ",", "estgenoprob", ",", 
+    "esthaploprob"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"description", "//", "MatrixForm"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"esthaplo", "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"3", ";;"}], ",", 
+     RowBox[{"2", ";;"}]}], "]"}], "]"}], "==", 
+  RowBox[{"refhaplo", "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"3", ";;"}], ",", 
+     RowBox[{"2", ";;"}]}], "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6268018680146866`*^9, 3.626801889544717*^9}, {
+   3.6271065524283524`*^9, 3.6271065554384127`*^9}, 3.6271922419170456`*^9, 
+   3.6271933717488656`*^9, {3.6272140385557184`*^9, 3.6272140389657183`*^9}, {
+   3.6307457311801405`*^9, 3.63074576712014*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.84240539999999997089474845779477618635`5.946121055387118", ",", "Null"}],
+   "}"}]], "Output",
+ CellChangeTimes->{3.6500879836322594`*^9, 3.6566807299100924`*^9, 
+  3.6566873544321985`*^9, 3.6566877061616087`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"8", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"76", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "76"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "76"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"52", ",", "17"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"51", ",", "7"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"101", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"50", ",", "75", ",", "100"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"50", ",", "75", ",", "8"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6500879836322594`*^9, 3.6566807299100924`*^9, 
+  3.6566873544321985`*^9, 3.656687706177209*^9}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"Genetic map of biallelic \
+markers\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"MAP of parental \
+haplotypes\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"Reference haplotypes\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"ln marginal likelihood of each \
+valent of each sib\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"ln marginal likelihood given \
+the LG type of each sib\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"Genotypes in order\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"Conditonal genotype \
+probability\"\>"},
+     {"\<\"inferTetraOrigin-Summary\"\>", "\<\"Conditonal haplotype \
+probability\"\>"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.6500879836322594`*^9, 3.6566807299100924`*^9, 
+  3.6566873544321985`*^9, 3.656687706192809*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.6500879836322594`*^9, 3.6566807299100924`*^9, 
+  3.6566873544321985`*^9, 3.6566877062084093`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**", "**", "**"}], "*", 
+   RowBox[{
+   "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**",
+     "**", "**"}], "*", 
+   RowBox[{"**", "**", "**", "**", "**", "**", "**", "**", "**", "**", "**"}],
+    "*", "*", "**"}], "******)"}]], "Input",
+ CellChangeTimes->{{3.6214025021356735`*^9, 3.6214025084166737`*^9}}]
+},
+WindowSize->{1662, 888},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+ShowSelection->True,
+Magnification:>1.25 Inherited,
+FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3656691240-7310108"->{
+  Cell[6668, 175, 905, 14, 125, "Print",
+   CellTags->"Info3656691240-7310108"]},
+ "Info3656691305-5999879"->{
+  Cell[14804, 374, 437, 7, 77, "Print",
+   CellTags->"Info3656691305-5999879"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3656691240-7310108", 20093, 518},
+ {"Info3656691305-5999879", 20204, 521}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 680, 13, 83, "Input"],
+Cell[1262, 37, 239, 3, 36, "Output"]
+}, Open  ]],
+Cell[1516, 43, 1237, 32, 175, "Input"],
+Cell[CellGroupData[{
+Cell[2778, 79, 649, 15, 83, "Input"],
+Cell[3430, 96, 211, 4, 36, "Output"],
+Cell[3644, 102, 1637, 31, 236, "Output"]
+}, Open  ]],
+Cell[5296, 136, 565, 12, 36, "Input"],
+Cell[CellGroupData[{
+Cell[5886, 152, 141, 2, 36, "Input"],
+Cell[6030, 156, 469, 10, 36, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6536, 171, 129, 2, 36, "Input"],
+Cell[6668, 175, 905, 14, 125, "Print",
+ CellTags->"Info3656691240-7310108"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7610, 194, 794, 14, 36, "Input"],
+Cell[CellGroupData[{
+Cell[8429, 212, 405, 9, 27, "Print"],
+Cell[8837, 223, 895, 20, 27, "Print"],
+Cell[9735, 245, 501, 11, 27, "Print"],
+Cell[10239, 258, 503, 10, 27, "Print"],
+Cell[10745, 270, 188, 2, 27, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[10960, 276, 565, 12, 36, "Input"],
+Cell[CellGroupData[{
+Cell[11550, 292, 1412, 31, 129, "Input"],
+Cell[12965, 325, 198, 3, 36, "Output"],
+Cell[13166, 330, 206, 3, 36, "Output"],
+Cell[13375, 335, 201, 3, 36, "Output"],
+Cell[13579, 340, 239, 3, 27, "Print"],
+Cell[13821, 345, 249, 6, 36, "Output"]
+}, Open  ]],
+Cell[14085, 354, 565, 12, 36, "Input"],
+Cell[CellGroupData[{
+Cell[14675, 370, 126, 2, 36, "Input"],
+Cell[14804, 374, 437, 7, 77, "Print",
+ CellTags->"Info3656691305-5999879"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15278, 386, 1335, 34, 106, "Input"],
+Cell[16616, 422, 258, 6, 36, "Output"],
+Cell[16877, 430, 737, 22, 36, "Output"],
+Cell[17617, 454, 1380, 31, 198, "Output"],
+Cell[19000, 487, 150, 2, 36, "Output"]
+}, Open  ]],
+Cell[19165, 492, 565, 12, 36, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
