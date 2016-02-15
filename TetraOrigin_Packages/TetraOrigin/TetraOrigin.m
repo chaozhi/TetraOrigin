@@ -1,6 +1,10 @@
 (* Mathematica Package *)
-
 (* Created by the Wolfram Workbench Nov 30, 2014 *)
+
+(* :Context: TetraOrigin`*)
+(* :Author: Chaozhi Zheng <chaozhi@gmail.com>*)
+(* :Mathematica Version: 9.0.1.0 *)
+(* :Description: A package defines user interface for haplotype reconstruciton in teraploids.*)
 
 BeginPackage["TetraOrigin`",{"TetraOrigin`TetraModel`","TetraOrigin`dosePreprocess`","TetraOrigin`TetraAlgorithm`"}]
 (* Exported symbols added here with SymbolName::usage *) 
@@ -20,13 +24,13 @@ bivalentPhasing::usage = "bivalentPhasing is an option for phasing algorithm. If
 
 bivalentDecoding::usage = "bivalentPhasing is an option for posterior decoding conditional on given parental haplotypes. If bivalentDecoding = True, posterior decoding accounts for only bivalent chromosome pairing but not qudrivalent pairing. If bivalentDecoding = False, posterior decoding accounts for both bivalent chromosome pairing and qudrivalent pairing."
 
-inferTetraPhase::usage = "inferTetraPhase[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy] returns {founderhaplo, loglhistory} where founderhaplo is the estimated parental haplotypes and loglhistory is the records of log likelihood for each proposed parental haplotypes. The ploidy = 4 for tetraploid species. epsF and eps are the dosage error probabilities for parents and siblings, respectively. SNPDose is the input marker data include the genetic map and the dosages for two parents and their full sibs. chrsubset is a list of indices for linkage groups, e.g. chrsubset={1,3} the first and the third linkage groups will be analyzed, and chrsubset = \"All\" all the likage groups will be analyzed. snpsubset is a list of indices for SNP markers of each linkage group, e.g. snpsubset ={2, 5, 10} the second, the fifth, and the tenth markers of each linkage groups will be analyzed, and snpsubset = \"All\" all the markers will be analyzed. "
+inferTetraPhase::usage = "inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, epsF,ploidy] returns {founderhaplo, loglhistory} where founderhaplo is the estimated parental haplotypes and loglhistory is the records of log likelihood for each proposed parental haplotypes. The ploidy = 4 for tetraploid species. epsF and eps are the dosage error probabilities for parents and siblings, respectively. SNPDose is the input marker data include the genetic map and the dosages for two parents and their full sibs. chrsubset is a list of indices for linkage groups, e.g. chrsubset={1,3} the first and the third linkage groups will be analyzed, and chrsubset = \"All\" all the likage groups will be analyzed. snpsubset is a list of indices for SNP markers of each linkage group, e.g. snpsubset ={2, 5, 10} the second, the fifth, and the tenth markers of each linkage groups will be analyzed, and snpsubset = \"All\" all the markers will be analyzed. "
 
 relabelHaplo::usage = "relabelHaplo[esthaplo, refhaplo] returns the reordered parental haplotypes of esthaplo, so that the total number of allele mismatches between esthaplo and refhaplo is minimized. esthaplo and refhaplo have the same format as the estimation returned by inferTetraPHase."
 
-loglTetraOrigin::usage = "loglTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy,founderhaplo] returns the log likelihood given the parental haplotype founderhaplo. Refer to inferTetraPhase for estimating parental haplotype and descriptions of other paremters."
+loglTetraOrigin::usage = "loglTetraOrigin[SNPDose, chrsubset, snpsubset, eps, founderhaplo, ploidy] returns the log likelihood given the parental haplotype founderhaplo. Refer to inferTetraPhase for estimating parental haplotype and descriptions of other paremters."
 
-inferTetraOrigin::usage = "inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, outputid] calculates the posterior probabilities for each sib at each SNP marker given the the parental haplotype founderhaplo, and the results are saved in the file \"TetraOrigin_Output_outputid_LinkageGroupA.txt\" for the linkage group A, and so on for the rest linkage groups. Refer to inferTetraPhase for estimating parental haplotype and descriptions of other paremters. \ninferTetraOrigin[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy, outputid] is a combination of {founderhaplo, loglhistory}= inferTetraPhase[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy] and inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, outputid]."
+inferTetraOrigin::usage = "inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, founderhaplo, ploidy, outputid] calculates the posterior probabilities for each sib at each SNP marker given the the parental haplotype founderhaplo, and the results are saved in the file \"TetraOrigin_Output_outputid_LinkageGroupA.txt\" for the linkage group A, and so on for the rest linkage groups. Refer to inferTetraPhase for estimating parental haplotype and descriptions of other paremters. \ninferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, epsF, ploidy, outputid] is a combination of {founderhaplo, loglhistory}= inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, epsF,ploidy] and inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, epsF,ploidy, founderhaplo, outputid]."
 
 saveAsSummaryITO::usage = "saveAsSummaryITO[tetraResultFile, summaryFile] summarizes the results in tetraResultFile produced by inferTetraOrigin for each linkage group, and save the summary in summaryFile. \nsaveAsSummaryITO[tetraResultFile, summaryFile, refhaploFile] performs an addition reordering of the estimated parental haplotypes in tetraResultFile, with respect to the reference haplotypes in refhaploFile; see relabelHaplo[esthaplo, refhaplo]."
 
@@ -42,7 +46,7 @@ Begin["`Private`"]
 (* Implementation of the package *)
 
 Options[inferTetraPhase] = {
-	maxStuck -> 10,
+    maxStuck -> 10,
     maxIteration -> 100, 
     minRepeatRun -> 3,
     maxPhasingRun -> 20,
@@ -53,23 +57,44 @@ Options[loglTetraOrigin] = {bivalentDecoding -> False}
 
 Options[inferTetraOrigin] = Join[Options[inferTetraPhase], Options[loglTetraOrigin]]
 
-inferTetraOrigin[SNPDosefile_String?FileExistsQ,chrsubset_, snpsubset_, epsF_?NonNegative, eps_?NonNegative, ploidy_Integer,outputid_String, opts : OptionsPattern[]] :=
-    Module[ {SNPDose},
-        SNPDose = Import[SNPDosefile,"CSV"];
-        inferTetraOrigin[SNPDose, chrsubset,snpsubset,epsF,eps, ploidy,outputid,opts]
-    ]            
-
 (*dataprobset is a very very large matrix, it is designed as a global constant, to avoid as function paremeter*)        
-inferTetraOrigin[SNPDose_List, chrsubset_, snpsubset_, epsF_?NonNegative, eps_?NonNegative, ploidy_Integer, outputid_String, opts : OptionsPattern[]] :=
-    Module[ {loglhistory,founderhaplo},
+inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, epsF_?NonNegative, ploidy_Integer, outputid_String, opts : OptionsPattern[]] :=
+    Module[ {SNPDose = inputSNPDose,eps = inputeps,loglhistory,founderhaplo},
+        If[ eps==0,
+            eps=10^(-10.)
+        ];
+        If[ StringQ[inputSNPDose],
+            If[ !FileExistsQ[inputSNPDose],
+                Print["File ", inputSNPDose," does not exist!"];
+                Return[$Failed]
+            ];
+            SNPDose = Import[inputSNPDose,"CSV"];
+        ];
         doseValidation[SNPDose, ploidy];
-        {founderhaplo,loglhistory} = inferTetraPhase[SNPDose, chrsubset, snpsubset,epsF, eps, ploidy, FilterRules[{opts}, Options[inferTetraPhase]]];
+        {founderhaplo,loglhistory} = inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, epsF, ploidy, FilterRules[{opts}, Options[inferTetraPhase]]];
         inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, outputid,opts];
     ]
 
-inferTetraOrigin[SNPDose_List, chrsubset_, snpsubset_, eps_?NonNegative, ploidy_Integer,inputfounderhaplo_List, outputid_String, opts : OptionsPattern[]] :=
-    Module[ {founderhaplo = inputfounderhaplo,onlybivalent,parentID,sibID,chrnames,snpseq, founderdose, sibdose,chrsubset2,outputfile, startprob, tranprob, condstates,snpmap,ii,starttime},
+inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, inputfounderhaplo_?(ListQ[#] ||StringQ[#]&), ploidy_Integer,outputid_String, opts : OptionsPattern[]] :=
+    Module[ {SNPDose = inputSNPDose,founderhaplo = inputfounderhaplo, eps = inputeps,onlybivalent,parentID,sibID,chrnames,snpseq, founderdose, sibdose,chrsubset2,outputfile, startprob, tranprob, condstates,snpmap,ii,starttime},
         (*data validation*)
+        If[ eps==0,
+            eps=10^(-10.)
+        ];
+        If[ StringQ[inputSNPDose],
+            If[ !FileExistsQ[inputSNPDose],
+                Print["File ", inputSNPDose," does not exist!"];
+                Return[$Failed]
+            ];
+            SNPDose = Import[inputSNPDose,"CSV"];
+        ];
+        If[ StringQ[inputfounderhaplo],
+            If[ !FileExistsQ[inputfounderhaplo],
+                Print["File ", inputfounderhaplo," does not exist!"];
+                Return[$Failed]
+            ];
+            founderhaplo = Import[inputfounderhaplo,"CSV"];
+        ];
         doseValidation[SNPDose, ploidy];
         haploValidation[founderhaplo];
         {parentID,sibID,snpseq, founderdose, sibdose,chrsubset2} = transformSNPDose[SNPDose,chrsubset, snpsubset];
@@ -107,10 +132,20 @@ inferTetraOrigin[SNPDose_List, chrsubset_, snpsubset_, eps_?NonNegative, ploidy_
         ClearAll[dataprobset];
     ]
 
-inferTetraPhase[SNPDose_List, chrsubset_, snpsubset_, epsF_?NonNegative, eps_?NonNegative, ploidy_Integer,opts : OptionsPattern[]] :=
-    Module[ {onlybivalent,minrun,maxrun,maxstuck,maxiteration,parentID,sibID,snpseq, founderdose, sibdose,chrsubset2,startprob, tranprob, 
+inferTetraPhase[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, epsF_?NonNegative, ploidy_Integer,opts : OptionsPattern[]] :=
+    Module[ {SNPDose = inputSNPDose,eps = inputeps,onlybivalent,minrun,maxrun,maxstuck,maxiteration,parentID,sibID,snpseq, founderdose, sibdose,chrsubset2,startprob, tranprob, 
       fhaploset,fhaploweight, fhaplo, founderhaplo,ii,starttime,phaselogl,phasingbook,snpID,chrID,haploID,loglhistory},        
         (*data validation*)
+        If[ eps==0,
+            eps=10^(-10.)
+        ];
+        If[ StringQ[inputSNPDose],
+            If[ !FileExistsQ[inputSNPDose],
+                Print["File ", inputSNPDose," does not exist!"];
+                Return[$Failed]
+            ];
+            SNPDose = Import[inputSNPDose,"CSV"];
+        ];
         doseValidation[SNPDose, ploidy];
         (*inference*)
         {parentID,sibID,snpseq, founderdose, sibdose,chrsubset2} = transformSNPDose[SNPDose,chrsubset, snpsubset];
@@ -121,7 +156,7 @@ inferTetraPhase[SNPDose_List, chrsubset_, snpsubset_, epsF_?NonNegative, eps_?No
          PrintTemporary["Pre-computing data likelihood..."];
          {startprob, tranprob} = tetraPriorProcess[snpseq, ii, ploidy, onlybivalent];
          (*dataprobset is calculated as a global variable*)
-         {fhaploset,fhaploweight} =  tetraDoseLikelihood[founderdose, sibdose, ii, epsF,eps, ploidy,onlybivalent];
+         {fhaploset,fhaploweight} =  tetraDoseLikelihood[founderdose, sibdose, ii, eps, epsF,ploidy,onlybivalent];
          PrintTemporary["Estimating parent phases by maximizing a posteriori..."];
          phasingbook = tetraPhasing[fhaploweight,startprob, tranprob, ploidy, onlybivalent,minrun,maxrun,maxstuck,maxiteration];
          phaselogl = phasingbook[[All,3]];
@@ -138,9 +173,26 @@ inferTetraPhase[SNPDose_List, chrsubset_, snpsubset_, epsF_?NonNegative, eps_?No
         {founderhaplo,loglhistory}
     ]
 
-loglTetraOrigin[SNPDose_List, chrsubset_, snpsubset_, eps_?NonNegative, ploidy_Integer,inputfounderhaplo_List,opts : OptionsPattern[]] :=
-    Module[ {founderhaplo = inputfounderhaplo,onlybivalent,parentID,sibID,snpseq, founderdose, sibdose,chrsubset2,startprob, tranprob, condstates,ii,logllist,res},        
+loglTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, inputfounderhaplo_?(ListQ[#] ||StringQ[#]&),ploidy_Integer,opts : OptionsPattern[]] :=
+    Module[ {SNPDose = inputSNPDose,founderhaplo = inputfounderhaplo,eps = inputeps,onlybivalent,parentID,sibID,snpseq, founderdose, sibdose,chrsubset2,startprob, tranprob, condstates,ii,logllist,res},        
         (*data validation*)
+        If[ eps==0,
+            eps=10^(-10.)
+        ];
+        If[ StringQ[inputSNPDose],
+            If[ !FileExistsQ[inputSNPDose],
+                Print["File ", inputSNPDose," does not exist!"];
+                Return[$Failed]
+            ];
+            SNPDose = Import[inputSNPDose,"CSV"];
+        ];
+        If[ StringQ[inputfounderhaplo],
+            If[ !FileExistsQ[inputfounderhaplo],
+                Print["File ", inputfounderhaplo," does not exist!"];
+                Return[$Failed]
+            ];
+            founderhaplo = Import[inputfounderhaplo,"CSV"];
+        ];
         doseValidation[SNPDose, ploidy];
         haploValidation[founderhaplo];
         {parentID,sibID,snpseq, founderdose, sibdose,chrsubset2} = transformSNPDose[SNPDose,chrsubset, snpsubset];
@@ -288,7 +340,7 @@ saveAsSummaryITO[tetraResultFile_String?FileExistsQ, summaryFile_String,referenc
         snpID,chrID,haploID,vvID,founderhaplo2,logllist2,genotypes,rowID,genoprob2,haplotypes,haploprob2, summary, key = "inferTetraOrigin-Summary"},
         res = ReadList[tetraResultFile];
         postdecode = res[[2 ;;]];
-        {parentID, sibID, snpmap, founderhaplo, eps, ploidy, onlybivalent} = res[[1, ;; 7]];        
+        {parentID, sibID, snpmap, founderhaplo, eps, ploidy, onlybivalent} = res[[1, ;; 7]];
         {logllist, sibtypeprob,sibtype,siblogl,valents,diploprob} = mergediploprob[postdecode, ploidy, onlybivalent];            
         (*relalel 2 ploidy haplotypes of the two parents*)
         If[ referencehaplo === None,
@@ -315,10 +367,10 @@ saveAsSummaryITO[tetraResultFile_String?FileExistsQ, summaryFile_String,referenc
             haplodis = Total[Abs[Flatten[founderhaplo - refhaplo]]];
             Print["The number of mismatches between estimated parental haplotypes and reference haplotypes: "<>ToString[haplodis]];
             (*change the order of two parents, so that the chrosomes in P1 is always labeled as 1234, and 5678 for P2*)
-            If[chrrule[[1, 2]] > ploidy,
-  				chrrule[[;; ploidy, 2]] -= ploidy;
-  				chrrule[[ploidy + 1 ;;, 2]] += ploidy;
-  			];
+            If[ chrrule[[1, 2]] > ploidy,
+                chrrule[[;; ploidy, 2]] -= ploidy;
+                chrrule[[ploidy + 1 ;;, 2]] += ploidy;
+            ];
             pos = Flatten[Position[valents, #, {1}, 1, Heads -> False] & /@ Map[Sort, valents /. chrrule, {2, 3}]];
             logllist = logllist[[All, pos]];
             states = zygoteStates[ploidy, onlybivalent];
@@ -338,9 +390,9 @@ saveAsSummaryITO[tetraResultFile_String?FileExistsQ, summaryFile_String,referenc
         valents2 = StringJoin @@ Riffle[#, "-"] & /@ valents2;
         valents2 = Transpose[{"Valent" <> ToString[#] & /@ Range[Length[valents]], valents2}];
         valents2 = Join[{{"Valent", "Code"}}, valents2];
-        siblogl2=Transpose[{sibID, sibtype, Round[siblogl,10^(-5.)]}];
-        siblogl2=Join[siblogl2,Round[sibtypeprob,10^(-5.)],2];
-        temp=Take["Pr("<>#<>")"&/@{"22","24","42","44"},Dimensions[sibtypeprob][[2]]];
+        siblogl2 = Transpose[{sibID, sibtype, Round[siblogl,10^(-5.)]}];
+        siblogl2 = Join[siblogl2,Round[sibtypeprob,10^(-5.)],2];
+        temp = Take["Pr("<>#<>")"&/@{"22","24","42","44"},Dimensions[sibtypeprob][[2]]];
         siblogl2 = Prepend[siblogl2, Join[{"SIB", "sibtype","siblogl"},temp]];
         snpID = snpmap[[2 ;;, 1]];
         chrID = snpmap[[2 ;;, 2]];

@@ -1,6 +1,10 @@
 (* Mathematica Package *)
-
 (* Created by the Wolfram Workbench Aug 24, 2013 *)
+
+(* :Context: ContinuousTimeHmm`*)
+(* :Author: Chaozhi Zheng <chaozhi@gmail.com>*)
+(* :Mathematica Version: 9.0.1.0 *)
+(* :Description: A package of standard algoirthms for hidden markov model, including some related visualization functions*)
 
 BeginPackage["ContinuousTimeHmm`"]
 (* Exported symbols added here with SymbolName::usage *) 
@@ -69,7 +73,6 @@ CtViterbiScale[startProb_, tranProbSeq_, dataProbSeq_] :=
         vPath = Reverse[NestList[{#[[1]] - 1, vIndex[[#[[1]], #[[2]]]]} &, {nSeq, ii}, nSeq - 1][[All, 2]]];
         {vPathLogProb, vPath}
     ]  
-
 
 (*temp = ((vProb #) & /@ Transpose[tranProbSeq[[t-1]]]) dataProbSeq[[t]];
  vProb = Max[#] & /@ temp;

@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[   2687540,      55555]
-NotebookOptionsPosition[   2680289,      55319]
-NotebookOutlinePosition[   2682404,      55379]
-CellTagsIndexPosition[   2682232,      55372]
+NotebookDataLength[   2669087,      55251]
+NotebookOptionsPosition[   2661804,      55016]
+NotebookOutlinePosition[   2663959,      55077]
+CellTagsIndexPosition[   2663787,      55070]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -133,7 +133,7 @@ TetraOrigin: Haplotype reconstruction in outcrossing tetraploids\
 Cell["\<\
 Chaozhi Zheng
 Biometris, Wageningen University and Research centre
-16 Nov, 2015\
+15 Feb, 2016\
 \>", "Subtitle",
  CellChangeTimes->{{3.6251350923986044`*^9, 3.6251351485001664`*^9}, {
   3.625135185588464*^9, 3.6251352122434635`*^9}, {3.625135245180464*^9, 
@@ -143,7 +143,7 @@ Biometris, Wageningen University and Research centre
   3.6307461608811407`*^9, 3.6307461667111406`*^9}, {3.630818377080149*^9, 
   3.630818385970149*^9}, {3.636691999848774*^9, 3.6366920057088327`*^9}, {
   3.639978536278694*^9, 3.639978541318744*^9}, {3.6566868770633707`*^9, 
-  3.656686884504713*^9}},
+  3.656686884504713*^9}, {3.6645213591023455`*^9, 3.664521365404907*^9}},
  TextAlignment->Center]
 }, Open  ]],
 
@@ -163,11 +163,17 @@ Cell[CellGroupData[{
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"SetDirectory", "[", 
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{
+     RowBox[{"ParentDirectory", "[", 
+      RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "<>", 
+     "\"\<\\\\TetraOrigin_Packages\>\""}], "]"}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
    RowBox[{
-    RowBox[{"ParentDirectory", "[", 
-     RowBox[{"NotebookDirectory", "[", "]"}], "]"}], "<>", 
-    "\"\<\\\\TetraOrigin_Packages\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+   "SetDirectory", "[", "\"\<D:\\\\Chaozhi\\\\Mathematica Packages\>\"", 
+    "]"}], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{"Needs", "[", "\"\<TetraOrigin`\>\"", "]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"SetDirectory", "[", 
@@ -177,7 +183,8 @@ Cell[BoxData[{
  CellChangeTimes->{{3.6251373150284796`*^9, 3.6251373409136868`*^9}, {
   3.6307479740751405`*^9, 3.6307479746951404`*^9}, {3.63074808441514*^9, 
   3.6307480965351405`*^9}, {3.6307579856901407`*^9, 3.6307579868801403`*^9}, {
-  3.630820574064149*^9, 3.630820574514149*^9}}],
+  3.630820574064149*^9, 3.630820574514149*^9}, {3.6629815225517783`*^9, 
+  3.6629815687774005`*^9}, {3.664521704896592*^9, 3.6645217094986515`*^9}}],
 
 Cell[BoxData[
  DynamicModuleBox[{Typeset`open$$ = True}, 
@@ -197,78 +204,78 @@ Cell[BoxData[
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"bivalentDecoding", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"bivalentDecoding", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["getSummaryITO",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"getSummaryITO", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"getSummaryITO", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["inferTetraPhase",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"inferTetraPhase", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"inferTetraPhase", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["maxIteration",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"maxIteration", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"maxIteration", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["maxStuck",
           BaseStyle->"InformationLink",
-          ButtonData:>{"Info3656691016-7295697", {"maxStuck", "TetraOrigin`"}},
+          ButtonData:>{"Info3664525313-6084149", {"maxStuck", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["relabelHaplo",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"relabelHaplo", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"relabelHaplo", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["toGridProb",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"toGridProb", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"toGridProb", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"]},
         {
          ButtonBox["bivalentPhasing",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"bivalentPhasing", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"bivalentPhasing", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["inferTetraOrigin",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"inferTetraOrigin", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"inferTetraOrigin", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["loglTetraOrigin",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"loglTetraOrigin", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"loglTetraOrigin", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["maxPhasingRun",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"maxPhasingRun", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"maxPhasingRun", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["minRepeatRun",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"minRepeatRun", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"minRepeatRun", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], 
          ButtonBox["saveAsSummaryITO",
           BaseStyle->"InformationLink",
           
           ButtonData:>{
-           "Info3656691016-7295697", {"saveAsSummaryITO", "TetraOrigin`"}},
+           "Info3664525313-6084149", {"saveAsSummaryITO", "TetraOrigin`"}},
           ButtonNote->"TetraOrigin`"], ""}
        },
        DefaultBaseStyle->"InfoGrid",
@@ -278,7 +285,7 @@ Cell[BoxData[
     GridBoxAlignment->{"Columns" -> {{Left}}, "Rows" -> {{Baseline}}}]}, 
    Dynamic[Typeset`open$$],
    ImageSize->Automatic]]], "Print", "InfoCell",
- CellChangeTimes->{3.65668741690723*^9}]
+ CellChangeTimes->{3.6645217134611025`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -298,7 +305,7 @@ Cell[BoxData[
    RowBox[{"maxPhasingRun", "\[Rule]", "20"}], ",", 
    RowBox[{"bivalentPhasing", "\[Rule]", "True"}]}], "}"}]], "Output",
  CellChangeTimes->{3.6500879069243608`*^9, 3.6566868730540934`*^9, 
-  3.656687417000831*^9}]
+  3.656687417000831*^9, 3.6645213667621417`*^9, 3.664521713570304*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -318,12 +325,12 @@ bivalentPhasing = True, phasing algorithm accounts for only bivalent \
 chromosome pairing but not qudrivalent pairing. If bivalentPhasing = False, \
 phasing algorithm accounts for both bivalent chromosome pairing and \
 qudrivalent pairing.\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.656687417125633*^9},
- CellTags->"Info3656691017-7295697"],
+ CellChangeTimes->{3.6645217137107058`*^9},
+ CellTags->"Info3664525313-6084149"],
 
 Cell[BoxData[
- StyleBox["\<\"inferTetraPhase[SNPDose, chrsubset, snpsubset, epsF,eps, \
-ploidy] returns {founderhaplo, loglhistory} where founderhaplo is the \
+ StyleBox["\<\"inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, \
+epsF,ploidy] returns {founderhaplo, loglhistory} where founderhaplo is the \
 estimated parental haplotypes and loglhistory is the records of log \
 likelihood for each proposed parental haplotypes. The ploidy = 4 for \
 tetraploid species. epsF and eps are the dosage error probabilities for \
@@ -336,8 +343,8 @@ indices for SNP markers of each linkage group, e.g. snpsubset ={2, 5, 10} the \
 second, the fifth, and the tenth markers of each linkage groups will be \
 analyzed, and snpsubset = \\\"All\\\" all the markers will be analyzed. \"\>",
    "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.656687417281635*^9},
- CellTags->"Info3656691017-7295697"]
+ CellChangeTimes->{3.664521713851107*^9},
+ CellTags->"Info3664525313-6084149"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -401,7 +408,8 @@ Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"55", ",", "76"}], "}"}]], "Output",
  CellChangeTimes->{3.6500879073843927`*^9, 3.6566868734753013`*^9, 
-  3.656687417437637*^9}],
+  3.656687417437637*^9, 3.6629815778243055`*^9, 3.664521367230154*^9, 
+  3.66452171402271*^9}],
 
 Cell[BoxData[
  TagBox[GridBox[{
@@ -433,7 +441,8 @@ Cell[BoxData[
   Function[BoxForm`e$, 
    TableForm[BoxForm`e$]]]], "Output",
  CellChangeTimes->{3.6500879073843927`*^9, 3.6566868734753013`*^9, 
-  3.6566874174532375`*^9}]
+  3.656687417437637*^9, 3.6629815778243055`*^9, 3.664521367230154*^9, 
+  3.6645217140383096`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -505,7 +514,7 @@ Cell[BoxData[
     RowBox[{"esthaplo", ",", "loglhistory"}], "}"}], "=", 
    RowBox[{"inferTetraPhase", "[", 
     RowBox[{
-    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "epsF", ",", "eps", 
+    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", "epsF", 
      ",", "ploidy", ",", 
      RowBox[{"bivalentPhasing", "\[Rule]", "True"}]}], "]"}]}], 
   ";"}]], "Input",
@@ -514,43 +523,46 @@ Cell[BoxData[
    3.63075935307314*^9}, {3.6308182407591496`*^9, 3.630818241119149*^9}, {
    3.630818291140149*^9, 3.6308182920701494`*^9}, {3.639978227385605*^9, 
    3.639978228315614*^9}, 3.639978260615937*^9, {3.6399787597908344`*^9, 
-   3.6399787765510015`*^9}}],
+   3.6399787765510015`*^9}, {3.66298158437296*^9, 3.6629815855460773`*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Start Date =\"\>", 
-   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:30:17\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 15 Feb 2016 11:41:54\"\>", 
    "\[InvisibleSpace]", "\<\". Chromosome  = \"\>", 
    "\[InvisibleSpace]", "\<\"A\"\>"}],
   SequenceForm[
-  "Start Date =", "Mon 16 Nov 2015 19:30:17", ". Chromosome  = ", "A"],
+  "Start Date =", "Mon 15 Feb 2016 11:41:54", ". Chromosome  = ", "A"],
   Editable->False]], "Print",
  CellChangeTimes->{3.650087907444397*^9, 3.6566868735221024`*^9, 
-  3.6566874175000377`*^9}],
+  3.6566874175000377`*^9, 3.662981588447367*^9, 3.6645213672769547`*^9, 
+  3.66452171406951*^9}],
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Finish Phasing Date =\"\>", 
-   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:30:58\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 15 Feb 2016 11:42:49\"\>", 
    "\[InvisibleSpace]", "\<\". Time used in Phasing = \"\>", 
-   "\[InvisibleSpace]", "41.300000000000004`", 
+   "\[InvisibleSpace]", "55.5`", 
    "\[InvisibleSpace]", "\<\" Seconds. log posterior of phasing runs = \"\>", 
    "\[InvisibleSpace]", 
    RowBox[{"{", 
     RowBox[{
      RowBox[{"-", "1813.3600000000001`"}], ",", 
      RowBox[{"-", "1813.3600000000001`"}], ",", 
+     RowBox[{"-", "2195.4900000000002`"}], ",", 
      RowBox[{"-", "1813.3600000000001`"}]}], "}"}]}],
   SequenceForm[
-  "Finish Phasing Date =", "Mon 16 Nov 2015 19:30:58", 
-   ". Time used in Phasing = ", 41.300000000000004`, 
+  "Finish Phasing Date =", "Mon 15 Feb 2016 11:42:49", 
+   ". Time used in Phasing = ", 55.5, 
    " Seconds. log posterior of phasing runs = ", {-1813.3600000000001`, \
--1813.3600000000001`, -1813.3600000000001`}],
+-1813.3600000000001`, -2195.4900000000002`, -1813.3600000000001`}],
   Editable->False]], "Print",
  CellChangeTimes->{3.650087907444397*^9, 3.6566868735221024`*^9, 
-  3.6566874588405676`*^9}]
+  3.6566874175000377`*^9, 3.662981588447367*^9, 3.6645213672769547`*^9, 
+  3.6645217696072226`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -577,14 +589,14 @@ Cell[BoxData[
 "\<\"A0625\"\>", "\<\"A0785\"\>", "\<\"A0945\"\>", "\<\"A1105\"\>"},
       {"\<\"Chromosome\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", \
 "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>", "\<\"A\"\>"},
-      {"\<\"P1_1\"\>", "1", "1", "1", "2", "1", "1", "1"},
+      {"\<\"P1_1\"\>", "1", "1", "2", "2", "1", "2", "1"},
       {"\<\"P1_2\"\>", "2", "1", "1", "1", "2", "1", "2"},
-      {"\<\"P1_3\"\>", "1", "1", "2", "1", "2", "2", "2"},
-      {"\<\"P1_4\"\>", "1", "1", "2", "2", "1", "2", "1"},
-      {"\<\"P2_1\"\>", "2", "1", "1", "1", "2", "1", "1"},
-      {"\<\"P2_2\"\>", "1", "2", "1", "1", "1", "1", "2"},
+      {"\<\"P1_3\"\>", "1", "1", "1", "2", "1", "1", "1"},
+      {"\<\"P1_4\"\>", "1", "1", "2", "1", "2", "2", "2"},
+      {"\<\"P2_1\"\>", "1", "2", "1", "1", "1", "1", "2"},
+      {"\<\"P2_2\"\>", "2", "1", "1", "1", "1", "2", "1"},
       {"\<\"P2_3\"\>", "2", "2", "2", "1", "1", "1", "2"},
-      {"\<\"P2_4\"\>", "2", "1", "1", "1", "1", "2", "1"}
+      {"\<\"P2_4\"\>", "2", "1", "1", "1", "2", "1", "1"}
      },
      GridBoxAlignment->{
       "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
@@ -601,17 +613,9 @@ Cell[BoxData[
    InterpretationBox[GridBox[{
       {GridBox[{
          {
-          RowBox[{"-", "7510.49`"}]},
+          RowBox[{"-", "7704.95`"}]},
          {
-          RowBox[{"-", "3136.15`"}]},
-         {
-          RowBox[{"-", "3282.87`"}]},
-         {
-          RowBox[{"-", "3079.03`"}]},
-         {
-          RowBox[{"-", "3017.21`"}]},
-         {
-          RowBox[{"-", "2037.8400000000001`"}]},
+          RowBox[{"-", "2470.31`"}]},
          {
           RowBox[{"-", "1813.3600000000001`"}]},
          {
@@ -628,13 +632,9 @@ Cell[BoxData[
              Offset[0.1]}, 
             Offset[0.2]}, "RowsIndexed" -> {}}], GridBox[{
          {
-          RowBox[{"-", "7583.04`"}]},
+          RowBox[{"-", "7298.650000000001`"}]},
          {
-          RowBox[{"-", "4296.64`"}]},
-         {
-          RowBox[{"-", "2976.19`"}]},
-         {
-          RowBox[{"-", "2236.62`"}]},
+          RowBox[{"-", "3063.44`"}]},
          {
           RowBox[{"-", "1813.3600000000001`"}]},
          {
@@ -651,15 +651,50 @@ Cell[BoxData[
              Offset[0.1]}, 
             Offset[0.2]}, "RowsIndexed" -> {}}], GridBox[{
          {
-          RowBox[{"-", "7568.93`"}]},
+          RowBox[{"-", "7421.22`"}]},
          {
-          RowBox[{"-", "2080.31`"}]},
+          RowBox[{"-", "2989.09`"}]},
          {
-          RowBox[{"-", "2164.87`"}]},
+          RowBox[{"-", "2442.65`"}]},
          {
-          RowBox[{"-", "2164.87`"}]},
+          RowBox[{"-", "2195.4900000000002`"}]},
          {
-          RowBox[{"-", "2164.87`"}]},
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2249.03`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]},
+         {
+          RowBox[{"-", "2379.9900000000002`"}]},
+         {
+          RowBox[{"-", "2196.02`"}]}
+        },
+        GridBoxAlignment->{
+         "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, 
+          "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+        GridBoxSpacings->{"Columns" -> {
+            Offset[0.27999999999999997`], {
+             Offset[0.7]}, 
+            Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+            Offset[0.2], {
+             Offset[0.1]}, 
+            Offset[0.2]}, "RowsIndexed" -> {}}], GridBox[{
+         {
+          RowBox[{"-", "7265.96`"}]},
+         {
+          RowBox[{"-", "3955.48`"}]},
+         {
+          RowBox[{"-", "3115.55`"}]},
          {
           RowBox[{"-", "1813.3600000000001`"}]},
          {
@@ -686,13 +721,15 @@ Cell[BoxData[
          Offset[0.2], {
           Offset[0.4]}, 
          Offset[0.2]}, "RowsIndexed" -> {}}],
-    TableForm[{{{-7510.49, -3136.15, -3282.87, -3079.03, -3017.21, \
--2037.8400000000001`, -1813.3600000000001`, -1813.3600000000001`}, {-7583.04, \
--4296.64, -2976.19, -2236.62, -1813.3600000000001`, -1813.3600000000001`}, \
-{-7568.93, -2080.31, -2164.87, -2164.87, -2164.87, -1813.3600000000001`, \
--1813.3600000000001`}}}]]}], "}"}]], "Output",
+    TableForm[{{{-7704.95, -2470.31, -1813.3600000000001`, \
+-1813.3600000000001`}, {-7298.650000000001, -3063.44, -1813.3600000000001`, \
+-1813.3600000000001`}, {-7421.22, -2989.09, -2442.65, -2195.4900000000002`, \
+-2196.02, -2196.02, -2196.02, -2196.02, -2196.02, -2196.02, -2249.03, \
+-2196.02, -2379.9900000000002`, -2196.02}, {-7265.96, -3955.48, -3115.55, \
+-1813.3600000000001`, -1813.3600000000001`}}}]]}], "}"}]], "Output",
  CellChangeTimes->{3.6500879834922495`*^9, 3.6566869145664916`*^9, 
-  3.6566874589029684`*^9}]
+  3.6566874589029684`*^9, 3.6629816539279146`*^9, 3.664521405154726*^9, 
+  3.6645217697008233`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -858,14 +895,14 @@ Cell[BoxData[
  TagBox[GridBox[{
     {
      GraphicsBox[{RasterBox[CompressedData["
-1:eJzllE1qgkEQRD/IxmvkJB7AnUcIuM7VPULMMpIBC6qpeqMgo03zuvr38+v7
-evs4juP0+F4e39/ffz/38///n9+Vv2pX+RQ99FfNl+Kf4kzXn17nVH0odVP5
-rnx31UnZO9Xeti/TcdvqT4mbeik62+aNrl/lU/JK1cfFV+Puutcr/am8XHpc
-nLa+tOlR7ak6qJyV/zTHxW/r7zQn1XeVT89LjUuZN5XfFjd1/+n+KodSz2md
-Kf2uuNN6UnFTHAp/5d/GafNXOfS7lOJT7kyK79Lj8p/Wuesdpsxb6g5T7vmu
-nOm9cOls47TdB1fctvq7/FU7fa5W/i6dLr7Kmba39attzlOvmte0nbIXbXfe
-ZU/NW6rvbfrbdKbmfHov2va3be/ebX9ddvp8UurfVh/KHdu1bvT7Q+nXiq/a
-2/J16X/d/wddHs6I
+1:eJztVEEKwkAQK3jxG77EB3jzCYJnv+4TrAcPRRcMJCZpLZRth5DJZGfmcLmd
+r7tpmvbze5rf5/fyuR/fQh/jr/9vT5QfzavmT8urPlGdLXiUp8VPtU6XflZe
+tR5XXhdPC/8Ij8bbdaJ4195o75OWvK6zRWdav7XrR/lb6nL5w+JP09PSnyi+
+/UTrbcG7eNT+t/vs8qfFN5SfVe9adbb0ofoc6XfVxdLD4km7lzQ9aNzlA8oz
+wqt5WPxp96vmcd07yt9SV9o8rnVPrtU3tU403lLX1vaYyzeWThY/yqOOp92X
+q8/VeFc/pM1Ly35G42n+qH126XflTfMTxbfPadr8pu2l/7z8Ju66LxZ/Wt+i
+cVe/tcypWn+aTlefu/b51vxJ66sR3pU3ra6WOUJ51Pwt+9nFz9LDwqt1pu1V
+195O41fjc/b5Azbdzog=
         "], {{0, 0}, {75, 8}}, {0, 1}], {
         {GrayLevel[
           NCache[-1 + GoldenRatio, 0.6180339887498949]], 
@@ -978,18 +1015,18 @@ uq0ang==
       PlotLabel->FormBox["\"truehaplo\"", TraditionalForm]]},
     {
      GraphicsBox[{RasterBox[CompressedData["
-1:eJzVldFtw0AMQw30p2t0kg7Qv45QoN9ZPSM0/WxQQZT06DsLMJzYOorm8aS3
-r9vn98txHK+P6+Nx/f7+G/f3//8/39V1UWR4XVyKj/q9qh5qHeperRtFV8es
-Lo2fBaXLdF/VdV182gdq/vS8r9Kn6p9V/sz4UH6r8ojeT3FpntN9of0zPQ8U
-vvs8Vnm6feI+jyo/yqeufujyaZdnd51rHmbRnRfRc7c+Wd0o3HPBNdeo+UL3
-E4qnit/Nm/rHve/d86u+d/ddlddZOKv2K1tP8VFx1HVRTP1QnQvufhitz/Kq
-78/WJ8OLouvnab2oPq1n9Xn3fE150j6sfu/0PFJ13fi71XXfqzyvkl/FuYqe
-bp6r+FN13XxW1V2FcxX8KJ/GydZP+Ud5Wah8Il4qjgvvLP0jHDf+rn0mw5vi
-V/Wv6knhZnn0vnf3p9pnprwofHVdNU99T/Vhag5m0fV5l89UBxonCrpvqs8p
-P7u/t6q/ikP3hyimfqd8muGrvKo4Wb5rztLf5Z5r1f1w9cPoudvnFA7dB9T1
-ET9qfzM+Xb5ZPbf/Mx6u+blKF4rnWXOWmntTXPcc7/JQ16+as9X67rlZzafn
-NdXHnvPU/118t3/c+lD9h/I/Ncfp/knNL2q+uPS5iv676ePWeRX/VXV307Oa
-f/Vzutv53a0vzfn8AOSXx7c=
+1:eJzdVUFOBDEMG4kL3+AlPIAbT0DizNd5AsuRhch2Yk+nRBrNbiex3TRJn94+
+Xt8fjuN4vD0vt+f790/7fP619Od39EZ271fFsX7TOHZf1T5Z/S5eNf/d8+rm
+EfG68ZF18+I+DzU/q3RWeis9yLo8CCel393v7Lm76wGZK3/dvk7jd/mRjmme
+p3l34bvPZapzdZ2wfFN96pyo7Oz7QuVHlp5/U5zKHxk7H1z3BeJn4131x+Kl
+5hnLy/ojHGRdvK5OFr+rb5o3F/4uenZ/q/vdxX8VTjr/u+d5VX52yZuK79rv
+f9XJ8iDcys+Fj9Zd+tnv6X2p8S4dXbyUP4p36WFx1HiEq/JO5wnL150zXRyW
+x10nLA5ad+3z/rv7nq38kJ1d58hvmodUPXf78So4rnelx6XzajirdKrru+xr
+Vb+r+LvUVeXv0unCV3HS61c7r1V1XsW5/FWc6r+6Xvl1cdh9uHDc+Gpdoe8p
+/Ygn9UbG9q+qn/VHfi5edT1Vb+q5uM73rHthyo/wVD6XHjUeWVe/6u/uF1e/
+u+ao6s/eLygOxav8XZ3p+0jVqfKvms9n9akrjyrvlN+t8+y5Or3fEF7lx/7v
+4qfrJ50f1/xZ1S+u/bJ8rP90bqf7xd1H6XsW2fTcVV0VfjrPLD/CV9ddfZfW
+WfF241L3HRvnwq9w3PjT+abqUfHT9xqv5wvUF7mD
         "], {{0, 0}, {75, 8}}, {0, 1}], {
         {GrayLevel[
           NCache[-1 + GoldenRatio, 0.6180339887498949]], 
@@ -1039,14 +1076,15 @@ uq0ang==
            FormBox["60", TraditionalForm]}, {74.5, 
            FormBox["75", TraditionalForm]}}}},
       ImageSize->650,
-      PlotLabel->FormBox["\"#Mismatches = 222\"", TraditionalForm]]}
+      PlotLabel->FormBox["\"#Mismatches = 234\"", TraditionalForm]]}
    },
    DefaultBaseStyle->"Column",
    GridBoxAlignment->{"Columns" -> {{Left}}},
    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
   "Column"]], "Output",
  CellChangeTimes->{3.6500879836322594`*^9, 3.6566869146912937`*^9, 
-  3.65668745901217*^9}]
+  3.65668745901217*^9, 3.662981658825404*^9, 3.6645214054199333`*^9, 
+  3.664521769825625*^9}]
 }, Open  ]],
 
 Cell[TextData[StyleBox["Relabel the estimated haplotypes withe respect to the \
@@ -1079,8 +1117,10 @@ Cell[BoxData[{
   3.6308178101291494`*^9, 3.630817810529149*^9}}],
 
 Cell[BoxData["True"], "Output",
- CellChangeTimes->{3.650087983702264*^9, 3.6566869147536955`*^9, 
-  3.6566874590589705`*^9}]
+ CellChangeTimes->{
+  3.650087983702264*^9, 3.6566869147536955`*^9, 3.6566874590589705`*^9, {
+   3.662981658908413*^9, 3.6629816632368455`*^9}, 3.6645214054823346`*^9, 
+   3.6645217698880258`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -1122,35 +1162,40 @@ Cell[BoxData[{
   RowBox[{"loglTetraOrigin", "[", 
    RowBox[{
    "SNPDose", ",", " ", "chrsubset", ",", " ", "snpsubset", ",", "eps", ",", 
-    " ", "ploidy", ",", "esthaplo", ",", 
+    " ", "esthaplo", ",", "ploidy", ",", 
     RowBox[{"bivalentDecoding", "\[Rule]", "True"}]}], "]"}], " ", "//", 
   "AbsoluteTiming"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"loglTetraOrigin", "[", 
    RowBox[{
    "SNPDose", ",", " ", "chrsubset", ",", " ", "snpsubset", ",", "eps", ",", 
-    " ", "ploidy", ",", "esthaplo", ",", 
+    " ", "esthaplo", ",", "ploidy", ",", 
     RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}], " ", "//", 
   "AbsoluteTiming"}]}], "Input",
  CellChangeTimes->{
   3.6308216109171495`*^9, {3.630821709027149*^9, 3.630821739267149*^9}, {
    3.6308220027371492`*^9, 3.630822006857149*^9}, {3.630823498982649*^9, 
    3.6308235101326494`*^9}, {3.6399782357556887`*^9, 
-   3.6399782360556917`*^9}, {3.6399788437416735`*^9, 3.6399788833420696`*^9}}],
+   3.6399782360556917`*^9}, {3.6399788437416735`*^9, 
+   3.6399788833420696`*^9}, {3.66298167467999*^9, 3.6629816800695286`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"0.93601199999999995515764794618007726967`5.9918813298600115", ",", 
-   RowBox[{"-", "1813.360747536517`"}]}], "}"}]], "Output",
- CellChangeTimes->{3.650087984672332*^9, 3.6566869157053137`*^9, 
-  3.656687460010583*^9}],
+  RowBox[{"0.87361120000000003216200639144517481327`5.9619181064825675", ",", 
+   RowBox[{"-", "1813.3607475365166`"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.650087984672332*^9, 3.6566869157053137`*^9, 3.656687460010583*^9, {
+   3.6629816683613577`*^9, 3.6629816833018517`*^9}, 3.664521406449559*^9, 
+   3.6645217708396378`*^9}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"12.3241580000000006123173079686239361763`7.1113571707668095", ",", 
+  RowBox[{"11.94975319999999996412043401505798101425`7.097958849108972", ",", 
    RowBox[{"-", "1186.1623270245886`"}]}], "}"}]], "Output",
- CellChangeTimes->{3.650087984672332*^9, 3.6566869157053137`*^9, 
-  3.6566874723347406`*^9}]
+ CellChangeTimes->{
+  3.650087984672332*^9, 3.6566869157053137`*^9, 3.656687460010583*^9, {
+   3.6629816683613577`*^9, 3.6629816833018517`*^9}, 3.664521406449559*^9, 
+   3.6645217827893915`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1165,7 +1210,7 @@ Cell[BoxData[{
        RowBox[{"loglTetraOrigin", "[", 
         RowBox[{
         "SNPDose", ",", " ", "chrsubset", ",", " ", "snpsubset", ",", " ", 
-         "x", ",", " ", "ploidy", ",", "esthaplo", ",", 
+         "x", ",", " ", "esthaplo", ",", "ploidy", ",", 
          RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}]}], " ", 
       ";", "\[IndentingNewLine]", 
       RowBox[{"PrintTemporary", "[", 
@@ -1218,7 +1263,6 @@ Cell[BoxData[{
      RowBox[{
       RowBox[{"FontFamily", "\[Rule]", "\"\<Helvetica\>\""}], ",", 
       RowBox[{"FontSize", "\[Rule]", "20"}]}], "]"}]}]}], "]"}]}], "Input",
- CellOpen->False,
  CellChangeTimes->{{3.630821898307149*^9, 3.6308219974471493`*^9}, {
    3.630822067627149*^9, 3.630822087198149*^9}, {3.6308221585181494`*^9, 
    3.630822162798149*^9}, {3.630822282318149*^9, 3.630822296548149*^9}, {
@@ -1227,7 +1271,8 @@ Cell[BoxData[{
    3.6308226587316494`*^9, 3.6308226591516495`*^9}, {3.630822724701649*^9, 
    3.6308228683316493`*^9}, {3.639978860991846*^9, 3.639978862151858*^9}, 
    3.6399789004322405`*^9, {3.6399793772684145`*^9, 3.6399793829284143`*^9}, {
-   3.6399798131105523`*^9, 3.639979841092112*^9}}],
+   3.6399798131105523`*^9, 3.639979841092112*^9}, {3.662981716569178*^9, 
+   3.662981718208342*^9}}],
 
 Cell[BoxData[
  GraphicsBox[{{}, 
@@ -1264,8 +1309,10 @@ Cell[BoxData[
   PlotRange->{{0, 0.005}, {0, 1.}},
   PlotRangeClipping->True,
   PlotRangePadding->{{0.0001, 0.0001}, {0.02, 0.02}}]], "Output",
- CellChangeTimes->{3.6500880593256063`*^9, 3.6566869877942977`*^9, 
-  3.6566875329727182`*^9}]
+ CellChangeTimes->{
+  3.6500880593256063`*^9, 3.6566869877942977`*^9, 3.6566875329727182`*^9, {
+   3.66298166908243*^9, 3.6629816958821096`*^9}, 3.662981784225943*^9, 
+   3.6645214852325797`*^9, 3.6645218442853794`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -1298,7 +1345,8 @@ Cell[BoxData[
    RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
    RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "}"}]], "Output",
  CellChangeTimes->{3.6500880593956075`*^9, 3.6566869878722987`*^9, 
-  3.656687533019519*^9}]
+  3.656687533019519*^9, 3.6629817910946302`*^9, 3.6645214853105817`*^9, 
+  3.6645218443633804`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1307,20 +1355,20 @@ Cell[BoxData[
  RowBox[{"?", "inferTetraOrigin"}]], "Input"],
 
 Cell[BoxData[
- StyleBox["\<\"inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, \
-founderhaplo, outputid] calculates the posterior probabilities for each sib \
-at each SNP marker given the the parental haplotype founderhaplo, and the \
-results are saved in the file \
+ StyleBox["\<\"inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, \
+founderhaplo, ploidy, outputid] calculates the posterior probabilities for \
+each sib at each SNP marker given the the parental haplotype founderhaplo, \
+and the results are saved in the file \
 \\\"TetraOrigin_Output_outputid_LinkageGroupA.txt\\\" for the linkage group \
 A, and so on for the rest linkage groups. Refer to inferTetraPhase for \
 estimating parental haplotype and descriptions of other paremters. \
-\\ninferTetraOrigin[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy, \
+\\ninferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, epsF, ploidy, \
 outputid] is a combination of {founderhaplo, loglhistory}= \
-inferTetraPhase[SNPDose, chrsubset, snpsubset, epsF,eps, ploidy] and \
-inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, \
-outputid].\"\>", "MSG"]], "Print", "PrintUsage",
- CellChangeTimes->{3.65668753309752*^9},
- CellTags->"Info3656691133-7853349"]
+inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, epsF,ploidy] and \
+inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, epsF,ploidy, \
+founderhaplo, outputid].\"\>", "MSG"]], "Print", "PrintUsage",
+ CellChangeTimes->{3.664521844472582*^9},
+ CellTags->"Info3664525444-9691859"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1332,8 +1380,8 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"inferTetraOrigin", "[", 
    RowBox[{
-   "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", "ploidy", 
-    ",", "founderhaplo", ",", "outputid", ",", 
+   "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", 
+    "founderhaplo", ",", "ploidy", ",", "outputid", ",", 
     RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
     RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}], 
   ";"}]}], "Input",
@@ -1345,42 +1393,45 @@ Cell[BoxData[{
    3.6307480003551407`*^9, 3.6307484579261403`*^9, {3.630818436560149*^9, 
    3.630818437100149*^9}, {3.630818473880149*^9, 3.630818496060149*^9}, {
    3.6308188131311493`*^9, 3.6308188468911495`*^9}, {3.6308199619831495`*^9, 
-   3.6308199649831495`*^9}, {3.6399789094323306`*^9, 3.63997891938243*^9}}],
+   3.6308199649831495`*^9}, {3.6399789094323306`*^9, 3.63997891938243*^9}, {
+   3.6629817351060314`*^9, 3.6629817365441756`*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Start Date =\"\>", 
-   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:32:13\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 15 Feb 2016 11:44:04\"\>", 
    "\[InvisibleSpace]", "\<\". Outputfile=\"\>", 
    "\[InvisibleSpace]", "\<\"TetraOrigin_Output_ExampleData_LinkageGroupA.txt\
 \"\>"}],
   SequenceForm[
-  "Start Date =", "Mon 16 Nov 2015 19:32:13", ". Outputfile=", 
+  "Start Date =", "Mon 15 Feb 2016 11:44:04", ". Outputfile=", 
    "TetraOrigin_Output_ExampleData_LinkageGroupA.txt"],
   Editable->False]], "Print",
  CellChangeTimes->{3.6500880596256123`*^9, 3.6566869880595007`*^9, 
-  3.6566875331443205`*^9}],
+  3.6566875331443205`*^9, 3.6629817920407248`*^9, 3.6645214854977865`*^9, 
+  3.664521844550583*^9}],
 
 Cell[BoxData[
  InterpretationBox[
   RowBox[{"\<\"Finish Date =\"\>", 
-   "\[InvisibleSpace]", "\<\"Mon 16 Nov 2015 19:32:33\"\>", 
+   "\[InvisibleSpace]", "\<\"Mon 15 Feb 2016 11:44:26\"\>", 
    "\[InvisibleSpace]", "\<\". Time used in Posteriordecoding = \"\>", 
-   "\[InvisibleSpace]", "20.700000000000003`", 
-   "\[InvisibleSpace]", "\<\" Seconds.\"\>"}],
+   "\[InvisibleSpace]", "21.8`", "\[InvisibleSpace]", "\<\" Seconds.\"\>"}],
   SequenceForm[
-  "Finish Date =", "Mon 16 Nov 2015 19:32:33", 
-   ". Time used in Posteriordecoding = ", 20.700000000000003`, " Seconds."],
+  "Finish Date =", "Mon 15 Feb 2016 11:44:26", 
+   ". Time used in Posteriordecoding = ", 21.8, " Seconds."],
   Editable->False]], "Print",
  CellChangeTimes->{3.6500880596256123`*^9, 3.6566869880595007`*^9, 
-  3.656687553876986*^9}],
+  3.6566875331443205`*^9, 3.6629817920407248`*^9, 3.6645214854977865`*^9, 
+  3.6645218663440623`*^9}],
 
 Cell[BoxData["\<\"------------------------------------------------------------\
 --------------------------\"\>"], "Print",
  CellChangeTimes->{3.6500880596256123`*^9, 3.6566869880595007`*^9, 
-  3.6566875539081864`*^9}]
+  3.6566875331443205`*^9, 3.6629817920407248`*^9, 3.6645214854977865`*^9, 
+  3.6645218663752627`*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -1393,9 +1444,7 @@ Cell["", "SlideShowNavigationBar",
 
 Cell[CellGroupData[{
 
-Cell["\<\
-Summary the TetraOrigin output \
-\>", "Section",
+Cell["Summary the TetraOrigin output ", "Section",
  CellChangeTimes->{{3.6307487578361406`*^9, 3.6307487703361406`*^9}}],
 
 Cell[TextData[StyleBox["Re-save the output of inferTetraOrigin as summary.",
@@ -1427,12 +1476,14 @@ Cell[BoxData[{
 Cell[BoxData["\<\"TetraOrigin_Output_ExampleData_LinkageGroupA.txt\"\>"], \
 "Output",
  CellChangeTimes->{3.650088081896057*^9, 3.6566870092289724`*^9, 
-  3.6566870406799755`*^9, 3.6566875540485888`*^9}],
+  3.6566870406799755`*^9, 3.6566875540485888`*^9, 3.662981814838004*^9, 
+  3.664521507291545*^9, 3.6645218665156646`*^9}],
 
 Cell[BoxData["\<\"TetraOrigin_Output_ExampleData_LinkageGroupA_Summary.csv\"\>\
 "], "Output",
  CellChangeTimes->{3.650088081896057*^9, 3.6566870092289724`*^9, 
-  3.6566870406799755`*^9, 3.6566875540797887`*^9}]
+  3.6566870406799755`*^9, 3.6566875540485888`*^9, 3.662981814838004*^9, 
+  3.664521507291545*^9, 3.664521866546865*^9}]
 }, Open  ]],
 
 Cell[TextData[StyleBox["Import the summary for further analysis in \
@@ -1498,7 +1549,8 @@ probability\"\>"}
   Function[BoxForm`e$, 
    MatrixForm[BoxForm`e$]]]], "Output",
  CellChangeTimes->{3.6500880819560585`*^9, 3.6566870092913733`*^9, 
-  3.6566870522865243`*^9, 3.6566875610062776`*^9}]
+  3.6566870522865243`*^9, 3.6566875610062776`*^9, 3.6629818219707174`*^9, 
+  3.6645215142025223`*^9, 3.664521873473354*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -1562,7 +1614,7 @@ Cell[BoxData[{
             RowBox[{"haploprob", "[", 
              RowBox[{"[", "line", "]"}], "]"}], "]"}], "]"}], ",", 
           RowBox[{"ColorFunctionScaling", "\[Rule]", "True"}], ",", 
-          RowBox[{"ImageSize", "\[Rule]", "1300"}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "1000"}], ",", 
           RowBox[{"MaxPlotPoints", "\[Rule]", "Infinity"}], ",", 
           RowBox[{"DataRange", "\[Rule]", 
            RowBox[{"{", 
@@ -1630,7 +1682,6 @@ Haplotype.\>\""}]}], ",",
   RowBox[{"gg", ",", 
    RowBox[{"DefaultDuration", "\[Rule]", 
     RowBox[{"Length", "[", "gg", "]"}]}]}], "]"}]}], "Input",
- CellOpen->False,
  CellChangeTimes->{{3.6308211912661495`*^9, 3.6308211967961493`*^9}, {
    3.630821244616149*^9, 3.6308213829861493`*^9}, {3.6308236704636493`*^9, 
    3.630823675063649*^9}, {3.6308237236736493`*^9, 3.630823817513649*^9}, {
@@ -1642,7 +1693,8 @@ Haplotype.\>\""}]}], ",",
    3.6308251136466494`*^9, 3.6308251189866495`*^9}, {3.630825162046649*^9, 
    3.630825227126649*^9}, {3.6308256044376493`*^9, 3.6308256971376495`*^9}, {
    3.630825811487649*^9, 3.6308258208976493`*^9}, {3.6308258941776495`*^9, 
-   3.630825939098649*^9}, {3.630826989130649*^9, 3.6308270464606495`*^9}}],
+   3.630825939098649*^9}, {3.630826989130649*^9, 3.6308270464606495`*^9}, 
+   3.6629818798955092`*^9}],
 
 Cell[BoxData[
  TagBox[
@@ -1655,7 +1707,7 @@ Cell[BoxData[
     "\"untitled\"", Typeset`specs$$ = {{{
        Hold[$CellContext`i3$$], 1, ""}, 1, 50, 1}}, Typeset`size$$ = 
     Automatic, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = True, $CellContext`i3$25930$$ = 0}, 
+    Typeset`skipInitDone$$ = True, $CellContext`i3$30244$$ = 0}, 
     PaneBox[
      PanelBox[
       DynamicWrapperBox[GridBox[{
@@ -2821,7 +2873,7 @@ fg==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -2829,363 +2881,7 @@ fg==
                  PlotLabel->FormBox[
                   "\"1th Line . RedLevel=Posterior Probability, Black X =True \
 Haplotype.\"", TraditionalForm],
-                 PlotRangeClipping->True,
-                 ImageCache->GraphicsData["CompressedBitmap", "\<\
-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
-\
-\>"]], 2->
+                 PlotRangeClipping->True], 2->
                 GraphicsBox[{RasterBox[CompressedData["
 1:eJzVWns0lmnXVyhROU2IohQZVHRSqB8zGZFxjoiOckyIRNNhaJIh1XQipZNK
 0nSSVyiVDpNKSaTk4fFQcd/38zxROij6TOud759v7W+991pmzXprWRd7XWtf
@@ -4227,7 +3923,7 @@ Bz/4Hb/jd/yOXy+P/qaLbjrfH7/hN/yGH/zgBz/4Hb/jd/yOP+9X//G55/3q
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -5283,7 +4979,7 @@ uPf74750x73f/3R77mC/v93x+35/9Av6Bf2CPtEn+kSf6Ff0K/oV/Yp+fr8q
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -6335,7 +6031,7 @@ o/O1vzr5rv3V2K/91div/dXYr/3V2K/91Th/7a/G+Wt/Nc5f+6tx/tpfjfPX
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -7390,7 +7086,7 @@ X3f/0EVPOj8//sAf+APf+MY3vvEn/sSf+BM/nu7+oYuedH5+/EPf/j9w4A98
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -8441,7 +8137,7 @@ yed6v5r9er+a/Xq/mv16v5r31/vVvL/er+b99X4176/3q3l/vV/N++v9at5f
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -9497,7 +9193,7 @@ ADq8e0o=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -10538,11 +10234,10 @@ X+371/1q37/uV/v+db/a96/71b5/3a82f92vdv8/ul/9A8IkYko=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
-                 
                  PlotLabel->FormBox[
                   "\"8th Line . RedLevel=Posterior Probability, Black X =True \
 Haplotype.\"", TraditionalForm],
@@ -11616,7 +11311,7 @@ On/er3r/P7pf/QF0UdWi
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -12658,7 +12353,7 @@ mvx6v5r9er+a/X/8fvULQ7WlRA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -13725,7 +13420,8 @@ X6339/vVen+/X6339/vVen+/X6339/vV4vf71er3+9XqX+P3q38BUTnUYA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
+                 
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
                  
@@ -14787,7 +14483,7 @@ r7af8/1q+33+3/erP7WiooY=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -15853,11 +15549,10 @@ J/56v8Jf71e35/V+tff1frX39X51e17vV7u/3q92f71f7fvX+9W+f71f7fvX
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
-                 
                  PlotLabel->FormBox[
                   "\"13th Line . RedLevel=Posterior Probability, Black X \
 =True Haplotype.\"", TraditionalForm],
@@ -16914,7 +16609,7 @@ n27e3/yBP/AH/sAPfvCDH/yJP/En/sSvJ7u/dz5/unmfz48/8Af+wA9+8IMf
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -18022,7 +17717,7 @@ cX++X4378/1q3J/vV+P+fL8a9+f71eDn+9Xo/+P3q9997dd4
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -19070,10 +18765,11 @@ q3F/vl+N+/P9atyf71eDn+9Xo/+P3q/+AKuI2wg=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
+                 
                  PlotLabel->FormBox[
                   "\"16th Line . RedLevel=Posterior Probability, Black X \
 =True Haplotype.\"", TraditionalForm],
@@ -20137,7 +19833,7 @@ P+v9atxf71eDX+9Xo/+P3q9+ARUlUAY=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -21179,7 +20875,7 @@ ven8/fEH/sAf+MEPfvCDP/En/sSf+Hq5+psu9qbz98cf+AN/4Ac/+MEP/sSf
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -22238,7 +21934,7 @@ Vg==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -23294,7 +22990,7 @@ Lrrp7OMHP/jB1+/sp4tu+sof+AN/4A/84Ac/+MGf+BN/4k98/bH66y666Xx/
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -24329,7 +24025,7 @@ P/j1I/vp4r7p7OMHP/jBr5/YTxf3TWcfP/jBD379zH66uG86+/jBD37w6xf2
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -25423,7 +25119,7 @@ EDJnlA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -26485,7 +26181,7 @@ AXfD2GA=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -27544,7 +27240,7 @@ H/gDf+AP/PV+hb/er84+fb1fnft6v3rxeb1fnf31fnX21/vV2V/vV+f71/vV
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -28597,11 +28293,10 @@ dh+vbA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
-                 
                  PlotLabel->FormBox[
                   "\"25th Line . RedLevel=Posterior Probability, Black X \
 =True Haplotype.\"", TraditionalForm],
@@ -29644,7 +29339,7 @@ iT/xJ/7E7/cr/H6/Wn16v1+tvd+vXn/u96vV7/er1e/3q9Xv96v1/n6/Wu/v
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -30682,11 +30377,10 @@ z3Xdr3afvu5XT5/X/Wr31/1q99f9avfX/Wr31/1q37/uV/v+db/a96/71b5/
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
-                 
                  PlotLabel->FormBox[
                   "\"27th Line . RedLevel=Posterior Probability, Black X \
 =True Haplotype.\"", TraditionalForm],
@@ -31755,7 +31449,7 @@ X8376/1q3l/vV5Nf71ezX+9Xs/+P36/+ABi3xHw=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -32833,7 +32527,7 @@ td+/3q/2+9f71X7/er/a/PV+tfvr/Yr71/vVfv96v9rvX+9Xm7/er3b/P3q/
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -33891,7 +33585,7 @@ frX3db96+rzuV7u/7le7v+5Xu7/uV/v+db/a96/71b5/3a/2/et+te9f96t9
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -34936,7 +34630,7 @@ ul9t8+t+td/rfrX1ul/tnut+td1b96v9Xverrdf9avf31v1qk1/3q+J1v9r6
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -36035,7 +35729,7 @@ Xw1+vl+N/j96v/oDh0igWg==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -37098,7 +36792,7 @@ jfvz/Wrw8/1q9P/R+9Vv2YiybA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -38180,7 +37874,7 @@ eGz2
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -39234,8 +38928,7 @@ v9r37/vVvn/fr/b9+36179/3q83f96vd3/er3f+P71f/ALsGY74=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
-                 
+                 ImageSize->1000,
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
                  
@@ -40303,7 +39996,7 @@ v9p/z/+7v/oDS5xU1g==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -41351,7 +41044,7 @@ q3V/368Wv+9Xq9/3q9X/j+9XLwDOXFFe
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -42424,7 +42117,7 @@ X01+vV/Nfr1fzf4/fr/6A5obq5Y=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -43482,7 +43175,7 @@ XXndeb869nm/OvZ5v7p7nveroz/vV0d/3q+O/rxfHffP+9Vx/7xfHffP+9Vx
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -44518,7 +44211,7 @@ nvP+auvn/dXuOe+vtj3vr7Y97692P2/eX2335/3Vdn/eX2335/3Vdn/eX233
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -45593,7 +45286,7 @@ Rj/vr0Y/769GP++vxv15fzXuz/urcX/eX4378/5q3J/3V+P+vL8a9+f91eDn
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -46648,7 +46341,7 @@ fOMb3/jGn/gTf+JP/PV+hb/er3afvt6v9r7er159Xu9Xu7/er3Z/vV/t/nq/
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -47709,7 +47402,7 @@ r/4GA2CyTA==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -48763,7 +48456,7 @@ Wt9n3l8N/X90f/UHLXxn7A==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -49814,7 +49507,7 @@ df+8X6375/1q3T/vV+v+eb9a98/71eLP+9Xqz/vV6v/H96u/AY1sUaY=
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -50871,7 +50564,7 @@ s6fX+9Xc6/1q97ner3af6/1q7vV+Nfd6v5p7vV/tfr/1fjXvr/ereX+9X837
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -51919,7 +51612,7 @@ s49vfOMbXz+zn97oSWcf3/jGN75+YT+90ZPOPr7xjW98/cp+eqMnnX184xvf
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -52990,7 +52683,7 @@ vV/N++v9at5f71fz/nq/mvfX+9W8v96vJr/er7S/3q8mv96vZr/er2b/H79f
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -54059,7 +53752,7 @@ vF+ted6v/n7m/Wrdn/erhv+/+9UvbVcc6w==
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -55121,7 +54814,7 @@ H/JDfshHPvKRj/wmv8lv8pv8er865edc71dzr/erufHr/Wr26/1q9uv9avbr
                     FormBox["40", TraditionalForm]}, {60, 
                     FormBox["60", TraditionalForm]}, {75, 
                     FormBox["75", TraditionalForm]}}}},
-                 ImageSize->1300,
+                 ImageSize->1000,
                  
                  LabelStyle->Directive[
                   FontFamily -> "Helvetica", FontSize -> 15],
@@ -55173,12 +54866,12 @@ H/JDfshHPvKRj/wmv8lv8pv8er865edc71dzr/erufHr/Wr26/1q9uv9avbr
            CurrentValue["CurrentFormatTime"]]& , {
            
            Manipulate`Dump`controllerLink[{$CellContext`i3$$, \
-$CellContext`i3$25930$$}, "X1", 
+$CellContext`i3$30244$$}, "X1", 
             If["DefaultAbsolute", True, "JB1"], False, {1, 50, 1}, 50, 1.]}], 
          CurrentValue[{
           "ControllerData", {
            "Gamepad", "Joystick", "Multi-Axis Controller"}}], {}]],
-       ImageSizeCache->{1333., {157.75, 162.75}}],
+       ImageSizeCache->{1291., {170.25, 177.25}}],
       DefaultBaseStyle->{},
       FrameMargins->{{5, 5}, {5, 5}}],
      BaselinePosition->Automatic,
@@ -55192,7 +54885,8 @@ $CellContext`i3$25930$$}, "X1",
    StripOnInput->False],
   Manipulate`InterpretManipulate[1]]], "Output",
  CellChangeTimes->{3.65008808202606*^9, 3.6566870093849745`*^9, 
-  3.6566875664663477`*^9}]
+  3.6566875664663477`*^9, 3.6629818284923697`*^9, 3.662981888843404*^9, 
+  3.6629819401935387`*^9, 3.6645215197406645`*^9, 3.664521878855423*^9}]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
@@ -55214,7 +54908,7 @@ Cell[BoxData[{
     RowBox[{"esthaplo", ",", "loglhistory"}], "}"}], "=", 
    RowBox[{"inferTetraPhase", "[", 
     RowBox[{
-    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "epsF", ",", "eps", 
+    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", "epsF", 
      ",", "ploidy", ",", 
      RowBox[{"bivalentPhasing", "\[Rule]", "True"}]}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", 
@@ -55227,8 +54921,8 @@ Cell[BoxData[{
   RowBox[{
    RowBox[{"inferTetraOrigin", "[", 
     RowBox[{
-    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", "ploidy", 
-     ",", "founderhaplo", ",", "outputid", ",", 
+    "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", 
+     "founderhaplo", ",", "ploidy", ",", "outputid", ",", 
      RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
      RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}], ";"}], 
   "\[IndentingNewLine]", 
@@ -55254,7 +54948,8 @@ Cell[BoxData[{
   ";"}]}], "DisplayFormula",
  CellChangeTimes->{
   3.630826498789649*^9, {3.639978928822524*^9, 3.6399789300225363`*^9}, {
-   3.656687486764926*^9, 3.656687487576136*^9}}],
+   3.656687486764926*^9, 3.656687487576136*^9}, {3.6629817516346846`*^9, 
+   3.6629817610086217`*^9}}],
 
 Cell[TextData[StyleBox["Altenatively",
  FontSize->24]], "Text",
@@ -55264,7 +54959,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"inferTetraOrigin", "[", 
    RowBox[{
-   "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "epsF", ",", "eps", 
+   "SNPDose", ",", "chrsubset", ",", "snpsubset", ",", "eps", ",", "epsF", 
     ",", "ploidy", ",", "outputid", ",", 
     RowBox[{"bivalentPhasing", "\[Rule]", "True"}], ",", 
     RowBox[{"bivalentDecoding", "\[Rule]", "False"}]}], "]"}], 
@@ -55292,7 +54987,8 @@ Cell[BoxData[{
    "]"}], ";"}]}], "DisplayFormula",
  CellChangeTimes->{
   3.6308265177396493`*^9, {3.6399789425326614`*^9, 3.639978943622672*^9}, {
-   3.6566874898381653`*^9, 3.6566874901969695`*^9}}]
+   3.6566874898381653`*^9, 3.6566874901969695`*^9}, {3.6629817668752084`*^9, 
+   3.6629817683693576`*^9}}]
 }, Open  ]]
 }, Open  ]],
 
@@ -55307,13 +55003,14 @@ Cell["Referece", "Section",
  CellChangeTimes->{{3.6272780402448635`*^9, 3.627278046697541*^9}, 
    3.6307463035411406`*^9}],
 
-Cell[TextData[StyleBox["Zheng, C., et al. 2015. Probabilistic multilocus \
-haplotype reconstruction in outcrossing tetraploids. Manucript. ",
+Cell[TextData[StyleBox["Chaozhi Zheng, Roeland E. Voorrips, Johannes Jansen, \
+Christine A. Hackett, Julie Ho, and Marco C.A.M. Bink. 2016. Probabilistic \
+multilocus haplotype reconstruction in outcrossing tetraploids.",
  FontSize->18]], "Item",
  CellChangeTimes->{{3.627278059699891*^9, 3.627278085784587*^9}, {
    3.627281116497564*^9, 3.627281116497564*^9}, {3.6307462041211405`*^9, 
    3.6307462286611404`*^9}, 3.63074626777114*^9, {3.6566867703417177`*^9, 
-   3.6566868265964*^9}}]
+   3.6566868265964*^9}, {3.664522119927348*^9, 3.664522150005355*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -55327,6 +55024,7 @@ PrintingOptions->{"Magnification"->1.,
 "PrintingMargins"->{{72, 72}, {54, 54}}},
 ShowSelection->True,
 TaggingRules->{"SlideShow" -> True},
+Magnification:>1.25 Inherited,
 TooltipBoxOptions->{TooltipDelay->Automatic},
 FrontEndVersion->"9.0 for Microsoft Windows (64-bit) (January 25, 2013)",
 StyleDefinitions->"Default.nb"
@@ -55336,44 +55034,44 @@ StyleDefinitions->"Default.nb"
 (* Internal cache information *)
 (*CellTagsOutline
 CellTagsIndex->{
- "Info3656691017-7295697"->{
-  Cell[12084, 314, 442, 7, 40, "Print",
-   CellTags->"Info3656691017-7295697"],
-  Cell[12529, 323, 1097, 16, 92, "Print",
-   CellTags->"Info3656691017-7295697"]},
- "Info3656691133-7853349"->{
-  Cell[50982, 1308, 904, 14, 75, "Print",
-   CellTags->"Info3656691133-7853349"]},
  "SlideShowHeader"->{
   Cell[579, 22, 4348, 96, 82, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[6284, 151, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[6332, 151, 64, 1, 81, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[13699, 347, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[14066, 354, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[18591, 470, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[19099, 479, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[26971, 701, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[28642, 738, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[43004, 1089, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[44870, 1129, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[49926, 1274, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[52207, 1321, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[54446, 1390, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[57055, 1441, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[59114, 1507, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[61928, 1559, 64, 1, 101, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[2676259, 55201, 64, 1, 81, "SlideShowNavigationBar",
+  Cell[2657540, 54895, 64, 1, 81, "SlideShowNavigationBar",
    CellTags->"SlideShowHeader"],
-  Cell[2679639, 55300, 64, 1, 81, "SlideShowNavigationBar",
-   CellTags->"SlideShowHeader"]}
+  Cell[2661028, 54996, 64, 1, 81, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"]},
+ "Info3664525313-6084149"->{
+  Cell[12449, 321, 444, 7, 77, "Print",
+   CellTags->"Info3664525313-6084149"],
+  Cell[12896, 330, 1097, 16, 156, "Print",
+   CellTags->"Info3664525313-6084149"]},
+ "Info3664525444-9691859"->{
+  Cell[53338, 1356, 911, 14, 156, "Print",
+   CellTags->"Info3664525444-9691859"]}
  }
 *)
 (*CellTagsIndex
 CellTagsIndex->{
- {"Info3656691017-7295697", 2680921, 55338},
- {"Info3656691133-7853349", 2681113, 55343},
- {"SlideShowHeader", 2681218, 55346}
+ {"SlideShowHeader", 2662460, 55036},
+ {"Info3664525313-6084149", 2663487, 55059},
+ {"Info3664525444-9691859", 2663680, 55064}
  }
 *)
 (*NotebookFileOutline
@@ -55381,180 +55079,178 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[579, 22, 4348, 96, 82, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
-Cell[4930, 120, 561, 10, 101, "Title"],
-Cell[5494, 132, 753, 14, 126, "Subtitle"]
+Cell[4930, 120, 561, 10, 127, "Title"],
+Cell[5494, 132, 801, 14, 156, "Subtitle"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6284, 151, 64, 1, 81, "SlideShowNavigationBar",
+Cell[6332, 151, 64, 1, 81, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[6373, 156, 184, 3, 86, "Section"],
+Cell[6421, 156, 184, 3, 106, "Section"],
 Cell[CellGroupData[{
-Cell[6582, 163, 774, 16, 92, "Input"],
-Cell[7359, 181, 3633, 99, 81, "Print"]
+Cell[6630, 163, 1042, 23, 129, "Input"],
+Cell[7675, 188, 3636, 99, 97, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11029, 285, 272, 4, 31, "Input"],
-Cell[11304, 291, 408, 9, 31, "Output"]
+Cell[11348, 292, 272, 4, 36, "Input"],
+Cell[11623, 298, 454, 9, 36, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11749, 305, 310, 5, 52, "Input"],
+Cell[12114, 312, 310, 5, 60, "Input"],
 Cell[CellGroupData[{
-Cell[12084, 314, 442, 7, 40, "Print",
- CellTags->"Info3656691017-7295697"],
-Cell[12529, 323, 1097, 16, 92, "Print",
- CellTags->"Info3656691017-7295697"]
+Cell[12449, 321, 444, 7, 77, "Print",
+ CellTags->"Info3664525313-6084149"],
+Cell[12896, 330, 1097, 16, 156, "Print",
+ CellTags->"Info3664525313-6084149"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13699, 347, 64, 1, 81, "SlideShowNavigationBar",
+Cell[14066, 354, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[13788, 352, 227, 3, 86, "Section"],
-Cell[14018, 357, 518, 8, 67, "Item"],
+Cell[14155, 359, 227, 3, 132, "Section"],
+Cell[14385, 364, 518, 8, 108, "Item"],
 Cell[CellGroupData[{
-Cell[14561, 369, 1290, 28, 72, "Input"],
-Cell[15854, 399, 168, 4, 31, "Output"],
-Cell[16025, 405, 1541, 30, 186, "Output"]
+Cell[14928, 376, 1290, 28, 103, "Input"],
+Cell[16221, 406, 238, 5, 45, "Output"],
+Cell[16462, 413, 1612, 31, 295, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[17603, 440, 198, 3, 39, "Item"],
+Cell[18111, 449, 198, 3, 62, "Item"],
 Cell[CellGroupData[{
-Cell[17826, 447, 193, 2, 25, "Subitem"],
-Cell[18022, 451, 291, 5, 25, "Subitem"],
-Cell[18316, 458, 202, 4, 25, "Subitem"]
+Cell[18334, 456, 193, 2, 37, "Subitem"],
+Cell[18530, 460, 291, 5, 37, "Subitem"],
+Cell[18824, 467, 202, 4, 37, "Subitem"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18591, 470, 64, 1, 81, "SlideShowNavigationBar",
+Cell[19099, 479, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[18680, 475, 206, 3, 86, "Section"],
-Cell[18889, 480, 305, 5, 39, "Item"],
+Cell[19188, 484, 206, 3, 132, "Section"],
+Cell[19397, 489, 305, 5, 62, "Item"],
 Cell[CellGroupData[{
-Cell[19219, 489, 1106, 27, 52, "Input"],
+Cell[19727, 498, 1153, 27, 75, "Input"],
 Cell[CellGroupData[{
-Cell[20350, 520, 432, 10, 23, "Print"],
-Cell[20785, 532, 903, 20, 23, "Print"]
+Cell[20905, 529, 502, 11, 33, "Print"],
+Cell[21410, 542, 1018, 22, 33, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[21737, 558, 491, 11, 31, "Input"],
-Cell[22231, 571, 4679, 123, 178, "Output"]
+Cell[22477, 570, 491, 11, 45, "Input"],
+Cell[22971, 583, 5610, 148, 286, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26971, 701, 64, 1, 81, "SlideShowNavigationBar",
+Cell[28642, 738, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[27060, 706, 114, 1, 86, "Section"],
-Cell[27177, 709, 374, 5, 39, "Item"],
+Cell[28731, 743, 114, 1, 132, "Section"],
+Cell[28848, 746, 374, 5, 62, "Item"],
 Cell[CellGroupData[{
-Cell[27576, 718, 5111, 136, 19, "Input",
+Cell[29247, 755, 5111, 136, 23, "Input",
  CellOpen->False],
-Cell[32690, 856, 9143, 192, 432, "Output"]
+Cell[34361, 893, 9234, 193, 668, "Output"]
 }, Open  ]],
-Cell[41848, 1051, 347, 5, 39, "Item"],
+Cell[43610, 1089, 347, 5, 62, "Item"],
 Cell[CellGroupData[{
-Cell[42220, 1060, 596, 18, 52, "Input"],
-Cell[42819, 1080, 124, 2, 31, "Output"]
+Cell[43982, 1098, 596, 18, 75, "Input"],
+Cell[44581, 1118, 228, 4, 45, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[43004, 1089, 64, 1, 81, "SlideShowNavigationBar",
+Cell[44870, 1129, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[43093, 1094, 171, 2, 86, "Section"],
-Cell[43267, 1098, 391, 6, 39, "Item"],
+Cell[44959, 1134, 171, 2, 132, "Section"],
+Cell[45133, 1138, 391, 6, 62, "Item"],
 Cell[CellGroupData[{
-Cell[43683, 1108, 1254, 30, 72, "Input"],
-Cell[44940, 1140, 258, 5, 31, "Output"],
-Cell[45201, 1147, 261, 5, 31, "Output"]
+Cell[45549, 1148, 1305, 31, 103, "Input"],
+Cell[46857, 1181, 363, 7, 45, "Output"],
+Cell[47223, 1190, 363, 7, 45, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45499, 1157, 2854, 72, 19, "Input",
- CellOpen->False],
-Cell[48356, 1231, 1509, 36, 400, "Output"]
+Cell[47623, 1202, 2886, 72, 161, "Input"],
+Cell[50512, 1276, 1634, 38, 622, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[49926, 1274, 64, 1, 81, "SlideShowNavigationBar",
+Cell[52207, 1321, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[50015, 1279, 179, 2, 86, "Section"],
+Cell[52296, 1326, 179, 2, 132, "Section"],
 Cell[CellGroupData[{
-Cell[50219, 1285, 194, 3, 31, "Input"],
-Cell[50416, 1290, 467, 10, 31, "Output"]
+Cell[52500, 1332, 194, 3, 45, "Input"],
+Cell[52697, 1337, 542, 11, 45, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[50920, 1305, 59, 1, 31, "Input"],
-Cell[50982, 1308, 904, 14, 75, "Print",
- CellTags->"Info3656691133-7853349"]
+Cell[53276, 1353, 59, 1, 45, "Input"],
+Cell[53338, 1356, 911, 14, 156, "Print",
+ CellTags->"Info3664525444-9691859"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[51923, 1327, 1113, 20, 52, "Input"],
+Cell[54286, 1375, 1167, 21, 75, "Input"],
 Cell[CellGroupData[{
-Cell[53061, 1351, 528, 12, 23, "Print"],
-Cell[53592, 1365, 561, 12, 23, "Print"],
-Cell[54156, 1379, 217, 3, 23, "Print"]
+Cell[55478, 1400, 601, 13, 33, "Print"],
+Cell[56082, 1415, 605, 12, 33, "Print"],
+Cell[56690, 1429, 292, 4, 33, "Print"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54446, 1390, 64, 1, 81, "SlideShowNavigationBar",
+Cell[57055, 1441, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[54535, 1395, 128, 3, 86, "Section"],
-Cell[54666, 1400, 423, 6, 39, "Item"],
+Cell[57144, 1446, 120, 1, 132, "Section"],
+Cell[57267, 1449, 423, 6, 62, "Item"],
 Cell[CellGroupData[{
-Cell[55114, 1410, 598, 14, 72, "Input"],
-Cell[55715, 1426, 202, 3, 31, "Output"],
-Cell[55920, 1431, 210, 3, 31, "Output"]
+Cell[57715, 1459, 598, 14, 103, "Input"],
+Cell[58316, 1475, 273, 4, 45, "Output"],
+Cell[58592, 1481, 279, 4, 45, "Output"]
 }, Open  ]],
-Cell[56145, 1437, 455, 7, 39, "Item"],
+Cell[58886, 1488, 455, 7, 62, "Item"],
 Cell[CellGroupData[{
-Cell[56625, 1448, 1043, 19, 52, "Input"],
-Cell[57671, 1469, 1382, 31, 146, "Output"]
+Cell[59366, 1499, 1043, 19, 75, "Input"],
+Cell[60412, 1520, 1455, 32, 247, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[59114, 1507, 64, 1, 81, "SlideShowNavigationBar",
+Cell[61928, 1559, 64, 1, 101, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[59203, 1512, 150, 2, 86, "Section"],
-Cell[59356, 1516, 362, 6, 29, "Item"],
+Cell[62017, 1564, 150, 2, 132, "Section"],
+Cell[62170, 1568, 362, 6, 46, "Item"],
 Cell[CellGroupData[{
-Cell[59743, 1526, 5021, 118, 19, "Input",
- CellOpen->False],
-Cell[64767, 1646, 2611431, 53548, 356, "Output"]
+Cell[62557, 1578, 5031, 118, 267, "Input"],
+Cell[67591, 1698, 2589888, 53190, 389, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2676259, 55201, 64, 1, 81, "SlideShowNavigationBar",
+Cell[2657540, 54895, 64, 1, 81, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[2676348, 55206, 97, 1, 86, "Section"],
-Cell[2676448, 55209, 1770, 47, 158, "DisplayFormula"],
-Cell[2678221, 55258, 131, 2, 41, "Text"],
-Cell[2678355, 55262, 1235, 32, 114, "DisplayFormula"]
+Cell[2657629, 54900, 97, 1, 106, "Section"],
+Cell[2657729, 54903, 1824, 48, 181, "DisplayFormula"],
+Cell[2659556, 54953, 131, 2, 52, "Text"],
+Cell[2659690, 54957, 1289, 33, 131, "DisplayFormula"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2679639, 55300, 64, 1, 81, "SlideShowNavigationBar",
+Cell[2661028, 54996, 64, 1, 81, "SlideShowNavigationBar",
  CellTags->"SlideShowHeader"],
 Cell[CellGroupData[{
-Cell[2679728, 55305, 123, 2, 86, "Section"],
-Cell[2679854, 55309, 407, 6, 33, "Item"]
+Cell[2661117, 55001, 123, 2, 106, "Section"],
+Cell[2661243, 55005, 533, 7, 69, "Item"]
 }, Open  ]]
 }, Open  ]]
 }

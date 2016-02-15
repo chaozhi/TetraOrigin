@@ -1,5 +1,10 @@
 (* Mathematica Package *)
 
+(* :Context: TetraOrigin`TetraModel`*)
+(* :Author: Chaozhi Zheng <chaozhi@gmail.com>*)
+(* :Mathematica Version: 9.0.1.0 *)
+(* :Description: A package defines teraploid model for haplotype reconstruction.*)
+
 BeginPackage["TetraOrigin`TetraModel`"]
 
 (* Exported symbols added here with SymbolName::usage *)  
@@ -24,6 +29,10 @@ tetraDoseLikelihood::usage = "tetraDoseLikelihood  "
 tetraDoseLikelihood2::usage = "tetraDoseLikelihood2  "
 
 dataprobset::usage = "dataprobset "
+
+calfhaploset::usage = "calfhaploset  "
+
+calDataProb::usage = "calDataProb  "
 
 
 Begin["`Private`"] (* Begin Private Context *) 
@@ -116,7 +125,7 @@ zygoteTranMtx[r_, nvalentsP1_, nvalentsP2_] :=
 Length[#] & /@ startprob:
     {16, 16, 16, 64, 16, 16, 16, 64, 16, 16, 16, 64, 64, 64, 64, 256}
 Dimensions[#] & /@ tranprob: 
-      {{74, 16, 16}, {74, 16, 16}, {74, 16, 16}, {74, 64, 64},
+      {{74, 16,16}, {74, 16, 16}, {74, 16, 16}, {74, 64, 64},
        {74, 16,16},{74, 16, 16}, {74, 16, 16}, {74, 64, 64},{74, 16, 16}, {74,16, 16},{74, 16, 16}, 
        {74, 64, 64}, {74, 64, 64}, {74, 64,64}, {74, 64, 64}, {74, 256, 256}}
 *)
@@ -217,7 +226,7 @@ calDataProb[founderdata_,offdose_,  eps_, ploidy_, onlybivalent_] :=
 (*tetraDoseLikelihood returns fhaploset,fhaploweight, and the global variable dataprobset.
 e.g. 75 markers and 50 sibs
 Dimensions[#] & /@ fhaploweight: 
-    xx
+    {64,96,96,...}
 Dimensions[#] & /@ fhaploset: 
     {{64, 8}, {96, 8}, {96, 8}, {6, 8}, {36, 8}, {64, 8}, {256, 8}, {64,8}, {256, 8},...}
 Dimensions[#] & /@ dataprobset: 
@@ -225,7 +234,7 @@ Dimensions[#] & /@ dataprobset:
      {64, 50, 256}, {256, 50, 256}, {64, 50, 256}, {256, 50,256}, ...}
 *)
 
-tetraDoseLikelihood[founderdose_, sibdose_, linkagegroup_, epsF_,eps_, ploidy_, onlybivalent_] :=
+tetraDoseLikelihood[founderdose_, sibdose_, linkagegroup_, eps_, epsF_,ploidy_, onlybivalent_] :=
     Module[ {fdose, offdose, fhaploset,fhaploweight},
         ClearAll[dataprobset];
         offdose = Transpose[sibdose[[All, linkagegroup]]];

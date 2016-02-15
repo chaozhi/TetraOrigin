@@ -1,5 +1,10 @@
 (* Mathematica Package *)
 
+(* :Context: TetraOrigin`TetraAlgorithm`*)
+(* :Author: Chaozhi Zheng <chaozhi@gmail.com>*)
+(* :Mathematica Version: 9.0.1.0 *)
+(* :Description: A package describes key algorithms for haplotype reconstruction*)
+
 BeginPackage["TetraOrigin`TetraAlgorithm`",{"ContinuousTimeHmm`","TetraOrigin`TetraModel`"}]
 
 (* Exported symbols added here with SymbolName::usage *)  
@@ -45,7 +50,7 @@ tetraMargLiklihood[startprob_, tranprob_, condstates_] :=
             CtLogLiklihood[startprob[[i]], tranprob[[i]], prob], {i,Length[bvss]}], {ind, nsib}], ProgressIndicator[ind, {1, nsib}]];
         logllist
     ]    
-                      
+
 tetraPosteriorDecoding[startprob_, tranprob_, condstates_, outputfile_] :=
     Module[ {outputstream,nsib = Length[dataprobset[[1]]],ls,prob,ind,i,bvss},
         Quiet[Close[outputfile]];
@@ -57,10 +62,11 @@ tetraPosteriorDecoding[startprob_, tranprob_, condstates_, outputfile_] :=
                 prob = dataprobset[[All, ind, bvss[[i]]]];
                 CtPosteriorDecoding[startprob[[i]], tranprob[[i]], prob], {i,Length[bvss]}];
             ls[[All,2]] = Round[ls[[All,2]], 10^(-6.)];
-            PutAppend[ls,outputstream], {ind, nsib}], ProgressIndicator[ind, {1, nsib}]];
+            Write[outputstream,ls];
+            0, {ind, nsib}], ProgressIndicator[ind, {1, nsib}]];
         Close[outputstream];
-    ]                  
-               
+    ]
+    
 (*fwlogpost[[H=i,Sib=o,OriginState=j]], priorhaploweight[[H=i]]*)
 calfwlogpost[fwlogpost_, priorhaploweight_] :=
     Module[ {logscale, sibscale, logpgeno, logpcondorig, loggeno},
@@ -157,6 +163,7 @@ calbvpairlogl[fhaplo_, startprob_, tranprob_,ploidy_, onlybivalent_] :=
         {sibtypeprob,sibtype, sibpos,siblogl} = calsiblogl[logllist, ploidy, onlybivalent];
         bvpair = MapThread[RandomChoice[#1[[#2]]->#2]&,{Exp[(#-Max[#])&/@logllist],sibpos}];
         logl = Round[Total[siblogl],10^(-2.)];
+        (*note the prior of fhaplo is not added*)
         {bvpair,logl}
     ]
     
@@ -179,7 +186,7 @@ tetraMaxPosterior[fhaploweight_,startprob_, tranprob_, ploidy_, onlybivalent_,ma
         ngeno = Length[#] & /@ fhaploweight;
         fhaplo = MapThread[RandomChoice[#1 -> Range[#2]] &, {fhaploweight, ngeno}];
         {bvpair,logl} = calbvpairlogl[fhaplo, startprob, tranprob,ploidy, onlybivalent];
-        PrintTemporary["iteartion = 0. ln[posterior|parent phases] \[Proportional] " <> ToString[logl]];
+        PrintTemporary["iteartion = 0. ln[posterior|parent phases] \[Proportional] " <> ToString[InputForm[logl]]];
         loglhistory = {logl};
         Do[
          newfhaplo = randomfhaplo[fhaploweight,bvpair,startprob, tranprob,ploidy, onlybivalent];
@@ -200,7 +207,7 @@ tetraMaxPosterior[fhaploweight_,startprob_, tranprob_, ploidy_, onlybivalent_,ma
              count++;             
              accept = False;
          ];
-         PrintTemporary["iteartion = " <> ToString[it] <>". accept = "<>ToString[accept]<> ". ln[posterior|parent phases] \[Proportional] " <> ToString[logl]];
+         PrintTemporary["iteartion = " <> ToString[it] <>". accept = "<>ToString[accept]<> ". ln[posterior|parent phases] \[Proportional] " <> ToString[InputForm[logl]]];
          If[ breakcond || count==maxstuck,
              Break[]
          ], {it, maxiteration}];

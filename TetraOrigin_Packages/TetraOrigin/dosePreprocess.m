@@ -1,5 +1,10 @@
 (* Mathematica Package *)
 
+(* :Context: TetraOrigin`dosePreprocess`*)
+(* :Author: Chaozhi Zheng <chaozhi@gmail.com>*)
+(* :Mathematica Version: 9.0.1.0 *)
+(* :Description: A package for checking input dossage data.*)
+
 BeginPackage["TetraOrigin`dosePreprocess`"]
 (* Exported symbols added here with SymbolName::usage *)  
 
@@ -72,7 +77,6 @@ transformDose[dose_] :=
         dosage = Transpose[Rest[Transpose[#]] & /@ dosage];
         dosage
     ]
-
     
 jittersnp[snploc_] :=
     Module[ {factor = 5, gsnp, len, pos, j, delt},

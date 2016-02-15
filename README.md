@@ -19,4 +19,4 @@ Mathematica package for haplotype reconstruction in a full-sib tetraploid family
 ##References
 ##
 
-Chaozhi Zheng, Roeland E. Voorrips, Johannes Jansen, Christine A. Hackett, Julie Ho, and Marco C.A.M. Bink. 2015. Probabilistic multilocus haplotype reconstruction in outcrossing tetraploids.
+Chaozhi Zheng, Roeland E. Voorrips, Johannes Jansen, Christine A. Hackett, Julie Ho, and Marco C.A.M. Bink. 2016. Probabilistic multilocus haplotype reconstruction in outcrossing tetraploids.
