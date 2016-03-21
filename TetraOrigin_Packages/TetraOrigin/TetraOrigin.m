@@ -72,7 +72,7 @@ inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_,
         ];
         doseValidation[SNPDose, ploidy];
         {founderhaplo,loglhistory} = inferTetraPhase[SNPDose, chrsubset, snpsubset, eps, epsF, ploidy, FilterRules[{opts}, Options[inferTetraPhase]]];
-        inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, ploidy, founderhaplo, outputid,opts];
+        inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, founderhaplo, ploidy, outputid,opts];
     ]
 
 inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, inputfounderhaplo_?(ListQ[#] ||StringQ[#]&), ploidy_Integer,outputid_String, opts : OptionsPattern[]] :=
