@@ -426,33 +426,12 @@ saveAsSummaryITO[tetraResultFile_String?FileExistsQ, summaryFile_String,referenc
                      {{key,"Conditonal haplotype probability"}},haploprob2];
         Export[summaryFile, ExportString[summary, "CSV"], "Table"]
     ]                  
-
-
-(*http://stackoverflow.com/questions/7525782/import-big-files-arrays-with-mathematica*)
-readTable[file_String?FileExistsQ, format_String, chunkSize_: 1000] :=
-    Module[ {stream, dataChunk, result, linkedList, add},
-        SetAttributes[linkedList, HoldAllComplete];
-        add[ll_, value_] :=
-            linkedList[ll, value];
-        stream = StringToStream[Import[file, "String"]];
-        Internal`WithLocalSettings[Null,(*main code*)
-            result = linkedList[];
-            While[dataChunk =!= {}, 
-             dataChunk = ImportString[StringJoin[Riffle[ReadList[stream, "String", chunkSize], "\n"]], format];
-             result = add[result, dataChunk];
-            ];
-            result = Flatten[result, Infinity, linkedList],(*clean-up*)
-         Close[stream]
-         ];
-        Join @@ result
-    ]
-   
           
 getSummaryITO[summaryFile_String?FileExistsQ] :=
     Module[ {res, res2, description, snpmap, esthaplo, refhaplo, logllist, sibtypes, 
         genotypes, estgenoprob, esthaploprob,key = "inferTetraOrigin-Summary"},
         (*res = Import[summaryFile, "CSV"];*)
-        res = readTable[summaryFile, "CSV"];
+        res = Import[summaryFile, "CSV"];
         res2 = Partition[Split[res, #1[[1]] != key && #2[[1]] != key &], 2];
         description = Flatten[#] & /@ res2[[All, 1]];
         res2 = res2[[All, 2]];

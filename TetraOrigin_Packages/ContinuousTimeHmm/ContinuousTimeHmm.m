@@ -6,7 +6,7 @@
 (* :Mathematica Version: 9.0.1.0 *)
 (* :Description: A package of standard algoirthms for hidden markov model, including some related visualization functions*)
 
-BeginPackage["ContinuousTimeHmm`",{"MagicDefinition`"}]
+BeginPackage["ContinuousTimeHmm`"]
 (* Exported symbols added here with SymbolName::usage *) 
 
 Unprotect @@ Names["ContinuousTimeHmm`*"];
