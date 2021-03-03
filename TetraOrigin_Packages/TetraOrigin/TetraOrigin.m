@@ -18,7 +18,7 @@ maxIteration::usage = "maxIteration is an option to specify the max number of it
 
 minRepeatRun::usage = "minRepeatRun is an option to specifiy the min number of phasing runs at the same local maximimum, so that phasing algorithm will stop if it statifies the minRepeatRun before reaching the maxPhasingRun."
 
-maxPhasingRun::usage = "maxPhasingRun is an option to specify th max number of phasing runs, so that phasing algorithm will stop if it reaches the maxPhasingRun, even not statifying the minRepeatRun."
+maxPhasingRun::usage = "maxPhasingRun is an option to specify the max number of phasing runs, so that phasing algorithm will stop if it reaches the maxPhasingRun, even not statifying the minRepeatRun."
 
 bivalentPhasing::usage = "bivalentPhasing is an option for phasing algorithm. If bivalentPhasing = True, phasing algorithm accounts for only bivalent chromosome pairing but not qudrivalent pairing. If bivalentPhasing = False, phasing algorithm accounts for both bivalent chromosome pairing and qudrivalent pairing."
 
@@ -37,6 +37,8 @@ saveAsSummaryITO::usage = "saveAsSummaryITO[tetraResultFile, summaryFile] summar
 getSummaryITO::usage = "getSummaryITO[summaryFile] imports the summary produced by saveAsSummaryITO for furthur analysis in mathematica, and returns {description, snpmap, esthaplo, refhaplo, logllist, siblogl, genotypes, estgenoprob, esthaploprob}, where description is a list of explainations for the rest."
 
 toGridProb::usage = "toGridProb[prob,snploc,grid] transfers the summarized genoprob or haploprob values at the locations of snploc to the probability values at the specified grid locations."
+
+mergediploprob::usage = "mergediploprob  "
 
 (*mergediploprob::usage = "mergediploprob  "
 
@@ -58,7 +60,8 @@ Options[loglTetraOrigin] = {bivalentDecoding -> False}
 Options[inferTetraOrigin] = Join[Options[inferTetraPhase], Options[loglTetraOrigin]]
 
 (*dataprobset is a very very large matrix, it is designed as a global constant, to avoid as function paremeter*)        
-inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, epsF_?NonNegative, ploidy_Integer, outputid_String, opts : OptionsPattern[]] :=
+inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, 
+	epsF_?NonNegative, ploidy_Integer, outputid_String, opts : OptionsPattern[]] :=
     Module[ {SNPDose = inputSNPDose,eps = inputeps,loglhistory,founderhaplo},
         If[ eps==0,
             eps=10^(-10.)
@@ -75,7 +78,9 @@ inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_,
         inferTetraOrigin[SNPDose, chrsubset, snpsubset, eps, founderhaplo, ploidy, outputid,opts];
     ]
 
-inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, inputfounderhaplo_?(ListQ[#] ||StringQ[#]&), ploidy_Integer,outputid_String, opts : OptionsPattern[]] :=
+
+inferTetraOrigin[inputSNPDose_?(ListQ[#] ||StringQ[#]&), chrsubset_, snpsubset_, inputeps_?NonNegative, 
+	inputfounderhaplo_?(ListQ[#] ||StringQ[#]&), ploidy_Integer,outputid_String, opts : OptionsPattern[]] :=
     Module[ {SNPDose = inputSNPDose,founderhaplo = inputfounderhaplo, eps = inputeps,onlybivalent,parentID,sibID,chrnames,snpseq, founderdose, sibdose,chrsubset2,outputfile, startprob, tranprob, condstates,snpmap,ii,starttime},
         (*data validation*)
         If[ eps==0,
@@ -459,14 +464,14 @@ getSummaryITO[summaryFile_String?FileExistsQ] :=
         {description, snpmap, esthaplo, refhaplo, logllist, sibtypes, genotypes, estgenoprob, esthaploprob}
     ]    
 
-indexByInterpolation[data_?(OrderedQ[#] && VectorQ[#, NumericQ] &)] :=
+intervalIndexFunction[list_?(VectorQ[#, NumericQ]&&OrderedQ[#,Less] &)] :=
     Module[ {ls, f},
-        ls = Transpose[{data, Range[Length[data]] - 1}];
+        ls = Transpose[{list, Range[Length[list]] - 1}];
         f = Interpolation[ls, InterpolationOrder -> 0];
         Function[x,
           Round[f[x]] + Switch[Depth[x],
-               1, Total[Boole[Thread[Rest[data] == x]]],
-               2, Total[Boole[Outer[Equal, x, Rest[data]]], {2}]
+               1, Total[Boole[Thread[Rest[list] == x]]],
+               2, Total[Boole[Outer[Equal, x, Rest[list]]], {2}]
               ]
          ]
     ]
@@ -474,7 +479,7 @@ indexByInterpolation[data_?(OrderedQ[#] && VectorQ[#, NumericQ] &)] :=
 toGridProb[prob_, snploc_, grid_] :=
     Module[ {ls},
         ls = Append[snploc, 2 snploc[[-1]] - snploc[[1]]];
-        ls = indexByInterpolation[ls][grid];
+        ls = intervalIndexFunction[ls][grid];
         prob[[All, ls]]
     ]/;Length[prob[[1]]]==Length[snploc]
   

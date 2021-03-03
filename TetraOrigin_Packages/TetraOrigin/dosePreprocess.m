@@ -68,8 +68,6 @@ haploValidation[haplo_] := Module[{chr, ls, res = True},
   If[res,True,Abort[]]
   ] 
 
-
-
 transformDose[dose_] :=
     Module[ {dosage},
         dosage = Rest[Transpose[Rest[dose]]];

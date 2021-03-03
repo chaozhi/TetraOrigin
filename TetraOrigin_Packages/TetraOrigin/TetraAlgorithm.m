@@ -26,6 +26,11 @@ tetraForward::usage = "tetraForward  "
 
 calbvpairlogl::usage = "calbvpairlogl  "
 
+randomfhaplo::usage = "randomfhaplo  "
+
+calfwlogpost::usage = "calfwlogpost  "
+
+
 Begin["`Private`"] (* Begin Private Context *) 
 
 tetraMargLiklihood[fhaplo_, startprob_, tranprob_, condstates_] :=
@@ -67,29 +72,40 @@ tetraPosteriorDecoding[startprob_, tranprob_, condstates_, outputfile_] :=
         Close[outputstream];
     ]
     
+logtot[x_] :=
+    Module[ {xmax},
+        xmax  = Max[x];                
+        Log[Total[Exp[x-xmax]]] + xmax
+    ]    
 (*fwlogpost[[H=i,Sib=o,OriginState=j]], priorhaploweight[[H=i]]*)
 calfwlogpost[fwlogpost_, priorhaploweight_] :=
     Module[ {logscale, sibscale, logpgeno, logpcondorig, loggeno},
-        sibscale = Log[Map[Total[Exp[#]] &, fwlogpost, {2}]];
+        sibscale = Map[logtot[#] &, fwlogpost, {2}];
         loggeno = Total[sibscale, {2}] + Log[priorhaploweight];
-        logscale = Log[Total[Exp[loggeno]]];
+        logscale = logtot[loggeno];
         logpgeno = loggeno - logscale;
-        logpcondorig = fwlogpost - sibscale;
+        logpcondorig = fwlogpost - sibscale;        
         {logscale, sibscale, logpgeno, logpcondorig}
     ]
 
+    
 tetraForward[fhaploweight_,startprob_, tranprob_, dataprob_,bvpair_] :=
     Module[ {nseq = Length[dataprob], ngeno = Length[#] & /@ dataprob, nsib = Length[dataprob[[1, 1]]],
-      fwlogpgeno, fwlogpost, fwlogscale, fwsibscale, ind,t,g},
+      fwlogpgeno, fwlogpost, fwlogscale, fwsibscale, ind,t,g,ls},
         fwlogpgeno = fwlogpost = fwlogscale = fwsibscale = Table[0, {nseq}];
         (*fwlogpost[[1]] = Log[Map[# startprob &, dataprob[[1]], {2}]];*)
         fwlogpost[[1]] = Log[Table[dataprob[[1, g, ind]]  startprob[[bvpair[[ind]]]], {g,Length[dataprob[[1]]]}, {ind, nsib}]];
         {fwlogscale[[1]], fwsibscale[[1]], fwlogpgeno[[1]], fwlogpost[[1]]} = calfwlogpost[fwlogpost[[1]], fhaploweight[[1]]];
         (*PrintTemporary["Forward calculating..."];*)
         Monitor[Do[
-          fwlogpost[[t]] = Log[Total[Table[Exp[fwlogpgeno[[t - 1, g]]] Table[Exp[fwlogpost[[t - 1, g, ind]]].tranprob[[bvpair[[ind]],t - 1]], {ind, nsib}], {g, ngeno[[t - 1]]}]]];
-          fwlogpost[[t]] = Table[fwlogpost[[t]], {ngeno[[t]]}] + Log[dataprob[[t]]];
-          {fwlogscale[[t]], fwsibscale[[t]], fwlogpgeno[[t]], fwlogpost[[t]]} = calfwlogpost[fwlogpost[[t]], fhaploweight[[t]]], {t, 2, nseq}], 
+            ls = Table[
+		        If[ fwlogpgeno[[t - 1, g]] < -100,
+		            0,
+		            Exp[fwlogpgeno[[t - 1, g]]]*Table[Exp[fwlogpost[[t - 1, g, ind]]].tranprob[[bvpair[[ind]], t - 1]], {ind, nsib}]
+		        ], {g, ngeno[[t - 1]]}];
+            fwlogpost[[t]] = Log[Total[ls]];            
+            fwlogpost[[t]] = Table[fwlogpost[[t]], {ngeno[[t]]}] + Log[dataprob[[t]]];
+            {fwlogscale[[t]], fwsibscale[[t]], fwlogpgeno[[t]], fwlogpost[[t]]} = calfwlogpost[fwlogpost[[t]], fhaploweight[[t]]], {t, 2, nseq}], 
          ProgressIndicator[t, {2, nseq}]];
         {fwlogpgeno, fwlogpost, fwlogscale, fwsibscale}
     ]
@@ -97,7 +113,7 @@ tetraForward[fhaploweight_,startprob_, tranprob_, dataprob_,bvpair_] :=
 
 tetraPathSampling[fhaploweight_,startprob_, tranprob_, dataprob_,bvpair_] :=
     Module[ {nseq = Length[dataprob], nsib = Length[dataprob[[1, 1]]], ngeno = 
-    Length[#] & /@ dataprob, states = Range[Length[#]] & /@ startprob, fwpgeno, fwprob, 
+    Length[#] & /@ dataprob, states = Range[Length[#]] & /@ startprob, maxw,fwpgeno, fwprob, 
       fwlogscale, fwsibscale, geno, orig, ls, weight, t,ind},
         {fwpgeno, fwprob, fwlogscale, fwsibscale} = tetraForward[fhaploweight,startprob, tranprob, dataprob,bvpair];
         fwpgeno = Exp[fwpgeno];
@@ -111,8 +127,11 @@ tetraPathSampling[fhaploweight_,startprob_, tranprob_, dataprob_,bvpair_] :=
           ls = ls # & /@ fwprob[[t]];
           weight = Map[Total, ls, {2}];
           weight = fwpgeno[[t]] (Times @@ # & /@ weight);
-          weight /= Max[weight];
-          geno[[t]] = RandomChoice[weight -> Range[ngeno[[t]]]];
+          maxw = Max[weight];
+          If[maxw>0,
+          	geno[[t]] = RandomChoice[weight/maxw -> Range[ngeno[[t]]]],
+          	geno[[t]] = RandomChoice[Range[ngeno[[t]]]]
+          ];
           orig[[t]] = Table[RandomChoice[ls[[geno[[t]], ind]] -> states[[bvpair[[ind]]]]], {ind, nsib}], {t,
             nseq - 1, 1, -1}], ProgressIndicator[t, {1, nseq - 1}]];
         {geno, orig}
@@ -146,13 +165,13 @@ calsiblogl[logllist_, ploidy_, onlybivalent_] :=
         pos = Flatten[Position[type, #, {1}, Heads -> False]] & /@Range[Max[type]];
         (*equally probable for each of 9 or 16 the chromosome pairing*)
         (*prior(V_0|H)=1/9 for bvModel, or 1/16 for fullModel*)
-        prior=1/Dimensions[logllist][[2]];
-        logposterior=logllist+Log[prior];
-        siblogl=Log[Total[Exp[logposterior],{2}]];
+        prior = 1/Dimensions[logllist][[2]];
+        logposterior = logllist+Log[prior];
+        siblogl = Log[Total[Exp[logposterior],{2}]];
         logposterior-=siblogl;
         sibtypeprob = Transpose[Total[Transpose[Exp[logposterior]][[#]]] & /@ pos];
         sibtype = Flatten[Ordering[#, -1] & /@ sibtypeprob];
-        sibpos = pos[[sibtype]];        
+        sibpos = pos[[sibtype]];
         {sibtypeprob,sibtype/.{1->22,2->24,3->42,4->44}, sibpos,siblogl}
     ]       
 
@@ -162,7 +181,7 @@ calbvpairlogl[fhaplo_, startprob_, tranprob_,ploidy_, onlybivalent_] :=
         logllist = tetraMargLiklihood[fhaplo, startprob, tranprob,condstates];
         {sibtypeprob,sibtype, sibpos,siblogl} = calsiblogl[logllist, ploidy, onlybivalent];
         bvpair = MapThread[RandomChoice[#1[[#2]]->#2]&,{Exp[(#-Max[#])&/@logllist],sibpos}];
-        logl = Round[Total[siblogl],10^(-2.)];
+        logl = Round[Total[siblogl],0.01];        
         (*note the prior of fhaplo is not added*)
         {bvpair,logl}
     ]
@@ -174,8 +193,10 @@ randomfhaplo[fhaploweight_,bvpair_,startprob_, tranprob_,ploidy_, onlybivalent_]
         bvss = Extract[condstates[[All, All, 2]],Transpose[{bvpair, newbvphase}]];
         dataprob = Table[dataprobset[[All, All, ind, bvss[[ind]]]], {ind, Length[bvss]}];
         (*dataprob = Transpose[#] & /@ Transpose[dataprob];*)
-        dataprob =Transpose[dataprob];
-        Do[dataprob[[i]]=Transpose[dataprob[[i]]],{i,Length[dataprob]}];
+        dataprob = Transpose[dataprob];
+        Do[dataprob[[i]] = Transpose[dataprob[[i]]],{i,Length[dataprob]}];
+        (*Put[fhaploweight,startprob, tranprob, dataprob,bvpair,"testphase.txt"];
+        Abort[];*)
         {newfhaplo, neworig} = tetraPathSampling[fhaploweight,startprob, tranprob, dataprob,bvpair];
         newfhaplo
     ]
@@ -186,28 +207,31 @@ tetraMaxPosterior[fhaploweight_,startprob_, tranprob_, ploidy_, onlybivalent_,ma
         ngeno = Length[#] & /@ fhaploweight;
         fhaplo = MapThread[RandomChoice[#1 -> Range[#2]] &, {fhaploweight, ngeno}];
         {bvpair,logl} = calbvpairlogl[fhaplo, startprob, tranprob,ploidy, onlybivalent];
-        PrintTemporary["iteartion = 0. ln[posterior|parent phases] \[Proportional] " <> ToString[InputForm[logl]]];
+        PrintTemporary["iteartion = 0. ln[posterior|parent phases] \[Proportional] " <> ToString[Round[logl,0.1]]];
         loglhistory = {logl};
         Do[
          newfhaplo = randomfhaplo[fhaploweight,bvpair,startprob, tranprob,ploidy, onlybivalent];
-         If[newfhaplo===fhaplo,
-         	{newfhaplo,newbvpair,newlogl} = {fhaplo,bvpair,logl},
-         	{newbvpair,newlogl} = calbvpairlogl[newfhaplo, startprob, tranprob,ploidy, onlybivalent];
+         If[ newfhaplo===fhaplo,
+             {newfhaplo,newbvpair,newlogl} = {fhaplo,bvpair,logl},
+             {newbvpair,newlogl} = calbvpairlogl[newfhaplo, startprob, tranprob,ploidy, onlybivalent];
          ];
          AppendTo[loglhistory,newlogl];
          Which[
              newlogl>logl,
              count = 0;
-             accept = True;             
+             accept = True;
              {fhaplo,bvpair,logl} = {newfhaplo,newbvpair,newlogl},
              newlogl==logl,
              breakcond = True;
              accept = True,
              newlogl<logl,
-             count++;             
+             count++;
              accept = False;
          ];
-         PrintTemporary["iteartion = " <> ToString[it] <>". accept = "<>ToString[accept]<> ". ln[posterior|parent phases] \[Proportional] " <> ToString[InputForm[logl]]];
+         (*PrintTemporary["iteartion = " <> ToString[it] <>". accept = "<>ToString[accept]<> ". ln[posterior|parent phases] \[Proportional] " <> ToString[InputForm[logl]]<>". Proposal logl ="<>ToString[newlogl]];*)
+         Print["iteartion = " <> ToString[it] <>". accept = "<>ToString[accept]<> 
+         		". ln[posterior|parent phases] \[Proportional] " <> ToString[Round[logl,0.1]]<>
+         		". Proposal logl ="<>ToString[Round[newlogl,0.1]]];
          If[ breakcond || count==maxstuck,
              Break[]
          ], {it, maxiteration}];
@@ -216,13 +240,16 @@ tetraMaxPosterior[fhaploweight_,startprob_, tranprob_, ploidy_, onlybivalent_,ma
     
 (*fhaploweight: tetraForward --> tetraPathSampling -->randomfhaplo --> tetraMaxPosterior --> tetraPhasing*)    
 tetraPhasing[fhaploweight_,startprob_, tranprob_, ploidy_,onlybivalent_,minrun_,maxrun_,maxstuck_,maxiteration_] :=
-    Module[ {phaseres,phaselogl,count,run,loglhistory,len},
+    Module[ {phaseres,phaselogl,count,run,loglhistory,len,ls},
         phaseres = phaselogl = Table[0,{maxrun}];
         Do[
             PrintTemporary["Phasing algorithm run "<>ToString[run]];
+            (*Put[fhaploweight,startprob, tranprob, ploidy, onlybivalent,maxstuck,maxiteration,"testphase.txt"];
+            Abort[];*)
             phaseres[[run]] = tetraMaxPosterior[fhaploweight,startprob, tranprob, ploidy, onlybivalent,maxstuck,maxiteration];
-            phaselogl[[run]] = Round[phaseres[[run,3]],10^(-2.)];
-            count = Count[phaselogl[[;;run]],Max[phaselogl[[;;run]]]];
+            phaselogl[[run]] = phaseres[[run,3]];
+            ls = Round[phaselogl[[;;run]]];
+            count = Count[ls,Max[ls]];
             If[ count == minrun,
                 phaseres = Take[phaseres,run];
                 phaselogl = Take[phaselogl,run];
@@ -231,7 +258,7 @@ tetraPhasing[fhaploweight_,startprob_, tranprob_, ploidy_,onlybivalent_,minrun_,
         PrintTemporary["Log posterior of phasing runs = "<>ToString[phaselogl]];
         loglhistory = phaseres[[All,-1]];
         len = Length[#]&/@loglhistory;
-        If[ Length[len]===maxrun,        	
+        If[ Length[len]===maxrun,
             Print[Style["Warning: the returned phasing may not be global optimized! Suggest to increase the option maxPhasingRun value.", Red]];
             If[ Mean[Flatten[len]]===maxiteration+1,
                 Print[Style["Warning2: suggest to increase the option maxIteration value and/or re-examine the genetic map.", Red]];

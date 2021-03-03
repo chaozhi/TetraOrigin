@@ -34,6 +34,7 @@ calfhaploset::usage = "calfhaploset  "
 
 calDataProb::usage = "calDataProb  "
 
+zygoteTranMtx::usage = "zygoteTranMtx  "
 
 Begin["`Private`"] (* Begin Private Context *) 
 
@@ -42,7 +43,7 @@ Begin["`Private`"] (* Begin Private Context *)
 zygoteStates[ploidy_, onlybivalent_] :=
     Module[ {s},
         s = If[ onlybivalent,
-                Permutations[Range[ploidy], {2}],
+                Permutations[Range[ploidy],{2}],
                 Tuples[{Range[ploidy], Range[ploidy]}]
             ];
         Flatten[#] & /@ Tuples[{s, s + ploidy}]
@@ -233,7 +234,6 @@ Dimensions[#] & /@ dataprobset:
     {{64, 50, 256}, {96, 50, 256}, {96, 50, 256}, {6, 50, 256}, {36, 50, 256}, 
      {64, 50, 256}, {256, 50, 256}, {64, 50, 256}, {256, 50,256}, ...}
 *)
-
 tetraDoseLikelihood[founderdose_, sibdose_, linkagegroup_, eps_, epsF_,ploidy_, onlybivalent_] :=
     Module[ {fdose, offdose, fhaploset,fhaploweight},
         ClearAll[dataprobset];
